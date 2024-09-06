@@ -1,0 +1,379 @@
+{
+  "users":[
+    {
+      "id":1,
+      "type":"conductor",
+      "name":"Carlos",
+      "lastname":"Gomez",
+      "username":"carlosg1",
+      "email":"carlos.gomez1@example.com",
+      "password":"12345",
+      "bus_company":"Transporte Ejemplo 1"
+    },
+    {
+      "id":2,
+      "type":"pasajero",
+      "name":"Maria",
+      "lastname":"Gonzalez",
+      "username":"mariag2",
+      "email":"maria.gonzalez2@example.com",
+      "password":"12345",
+      "bus_company":""
+    },
+    {
+      "id":3,
+      "type":"conductor",
+      "name":"Pedro",
+      "lastname":"Sanchez",
+      "username":"pedros3",
+      "email":"pedro.sanchez3@example.com",
+      "password":"12345",
+      "bus_company":"Transporte Ejemplo 2"
+    },
+    {
+      "id":4,
+      "type":"pasajero",
+      "name":"Laura",
+      "lastname":"Diaz",
+      "username":"laurad4",
+      "email":"laura.diaz4@example.com",
+      "password":"12345",
+      "bus_company":""
+    },
+    {
+      "id":5,
+      "type":"conductor",
+      "name":"Miguel",
+      "lastname":"Jimenez",
+      "username":"miguelj5",
+      "email":"miguel.jimenez5@example.com",
+      "password":"12345",
+      "bus_company":"Transporte Ejemplo 3"
+    }
+  ],
+  "notifications":[
+    {
+      "id":1,
+      "title":"Nueva ruta disponible",
+      "subtitle":"Ruta 5",
+      "description":"La ruta 5 ahora está disponible.",
+      "img_url":"https://cdn-icons-png.flaticon.com/512/891/891448.png"
+    },
+    {
+      "id":2,
+      "title":"Promoción de verano",
+      "subtitle":"50% de descuento",
+      "description":"Aprovecha el 50% de descuento en todos los pasajes.",
+      "img_url":"https://w7.pngwing.com/pngs/881/716/png-transparent-promotion-advertising-price-service-vibbo-promocion-leaf-text-service-thumbnail.png"
+    },
+    {
+      "id":3,
+      "title":"Actualización de horarios",
+      "subtitle":"Ruta 3",
+      "description":"Se han actualizado los horarios de la Ruta 3.",
+      "img_url":"https://cdn-icons-png.flaticon.com/512/4368/4368667.png"
+    },
+    {
+      "id":4,
+      "title":"Nuevo paradero",
+      "subtitle":"Paradero 10",
+      "description":"Se ha añadido un nuevo paradero en la Ruta 4.",
+      "img_url":"https://cdn-icons-png.freepik.com/512/936/936862.png"
+    },
+    {
+      "id":5,
+      "title":"Conductor destacado",
+      "subtitle":"Carlos Gomez",
+      "description":"Felicidades a Carlos Gomez por su excelente servicio.",
+      "img_url":"https://cdn-icons-png.flaticon.com/512/4635/4635019.png"
+    }
+  ],
+  "buses":[
+    {
+      "id":1,
+      "bus_name":"Bus 001",
+      "bus_stops":[
+        {
+          "id":1,
+          "stop_name": "monte1",
+          "latitude":"-12.043333",
+          "longitude":"-77.028333"
+        },
+        {
+          "id":2,
+          "stop_name": "larco1",
+          "latitude":"-12.046373",
+          "longitude":"-77.042754"
+        },
+        {
+          "id":3,
+          "stop_name": "angamos1",
+          "latitude":"-12.045923",
+          "longitude":"-77.030312"
+        },
+        {
+          "id":4,
+          "stop_name": "aviacion1",
+          "latitude":"-12.046375",
+          "longitude":"-77.042183"
+        },
+        {
+          "id":5,
+          "stop_name": "primavera1",
+          "latitude":"-12.043939",
+          "longitude":"-77.030516"
+        }
+      ]
+    },
+    {
+      "id":2,
+      "bus_name":"Bus 002",
+      "bus_stops":[
+        {
+          "id":1,
+          "stop_name": "monte2",
+          "latitude":"-12.043333",
+          "longitude":"-77.028333"
+        },
+        {
+          "id":2,
+          "stop_name": "larco2",
+          "latitude":"-12.046373",
+          "longitude":"-77.042754"
+        },
+        {
+          "id":3,
+          "stop_name": "angamos2",
+          "latitude":"-12.045923",
+          "longitude":"-77.030312"
+        },
+        {
+          "id":4,
+          "stop_name": "aviacion2",
+          "latitude":"-12.046375",
+          "longitude":"-77.042183"
+        },
+        {
+          "id":5,
+          "stop_name": "primavera2",
+          "latitude":"-12.043939",
+          "longitude":"-77.030516"
+        }
+      ]
+    },
+    {
+      "id":3,
+      "bus_name":"Bus 003",
+      "bus_stops":[
+        {
+          "id":1,
+          "stop_name": "monte3",
+          "latitude":"-12.043333",
+          "longitude":"-77.028333"
+        },
+        {
+          "id":2,
+          "stop_name": "larco3",
+          "latitude":"-12.046373",
+          "longitude":"-77.042754"
+        },
+        {
+          "id":3,
+          "stop_name": "angamos3",
+          "latitude":"-12.045923",
+          "longitude":"-77.030312"
+        },
+        {
+          "id":4,
+          "stop_name": "aviacion3",
+          "latitude":"-12.046375",
+          "longitude":"-77.042183"
+        },
+        {
+          "id":5,
+          "stop_name": "primavera3",
+          "latitude":"-12.043939",
+          "longitude":"-77.030516"
+        }
+      ]
+    },
+    {
+      "id":4,
+      "bus_name":"Bus 004",
+      "bus_stops":[
+        {
+          "id":1,
+          "stop_name": "monte4",
+          "latitude":"-12.043333",
+          "longitude":"-77.028333"
+        },
+        {
+          "id":2,
+          "stop_name": "larco4",
+          "latitude":"-12.046373",
+          "longitude":"-77.042754"
+        },
+        {
+          "id":3,
+          "stop_name": "angamos4",
+          "latitude":"-12.045923",
+          "longitude":"-77.030312"
+        },
+        {
+          "id":4,
+          "stop_name": "aviacion4",
+          "latitude":"-12.046375",
+          "longitude":"-77.042183"
+        },
+        {
+          "id":5,
+          "stop_name": "primavera4",
+          "latitude":"-12.043939",
+          "longitude":"-77.030516"
+        }
+      ]
+    },
+    {
+      "id":5,
+      "bus_name":"Bus 005",
+      "bus_stops":[
+        {
+          "id":1,
+          "stop_name": "monte5",
+          "latitude":"-12.043333",
+          "longitude":"-77.028333"
+        },
+        {
+          "id":2,
+          "stop_name": "larco5",
+          "latitude":"-12.046373",
+          "longitude":"-77.042754"
+        },
+        {
+          "id":3,
+          "stop_name": "angamos5",
+          "latitude":"-12.045923",
+          "longitude":"-77.030312"
+        },
+        {
+          "id":4,
+          "stop_name": "aviacion5",
+          "latitude":"-12.046375",
+          "longitude":"-77.042183"
+        },
+        {
+          "id":5,
+          "stop_name": "primavera5",
+          "latitude":"-12.043939",
+          "longitude":"-77.030516"
+        }
+      ]
+    }
+  ],
+  "promos":[
+    {
+      "id":1,
+      "img_url":"https://cdn.www.gob.pe/uploads/document/file/1618187/WhatsApp%20Image%202020-12-24%20at%208.08.15%20AM.jpeg.jpeg",
+      "title":"Descuento de Primavera",
+      "valid_date":"2024-06-01",
+      "benefit":"30% de descuento en pasajes"
+    },
+    {
+      "id":2,
+      "img_url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTix8dTXdxzmG-fuopZmpqgQnGoAEiDQ_tY0g&s",
+      "title":"Viaje Gratis",
+      "valid_date":"2024-06-15",
+      "benefit":"Un viaje gratis por cada 5 viajes"
+    },
+    {
+      "id":3,
+      "img_url":"https://d5tnfl9agh5vb.cloudfront.net/uploads/2020/06/carne_universitario-570x363.png",
+      "title":"Descuento para Estudiantes",
+      "valid_date":"2024-07-01",
+      "benefit":"50% de descuento para estudiantes"
+    },
+    {
+      "id":4,
+      "img_url":"https://larepublica.cronosmedia.glr.pe/original/2020/01/19/633c6447b5044076b5341676.jpg",
+      "title":"Tarifa Plana",
+      "valid_date":"2024-06-30",
+      "benefit":"Tarifa plana en todas las rutas"
+    },
+    {
+      "id":5,
+      "img_url":"https://cdn.www.gob.pe/uploads/document/file/2041168/WhatsApp%20Image%202021-06-30%20at%202.23.36%20PM.jpeg.jpeg",
+      "title":"Descuento Familiar",
+      "valid_date":"2024-08-01",
+      "benefit":"20% de descuento para familias"
+    },
+    {
+      "id": 6,
+      "img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/2017_Lima_-_Autob%C3%BAs_en_la_avenida_Alfonso_Ugarte_cerca_del_plaza_Dos_de_Mayo.jpg/1280px-2017_Lima_-_Autob%C3%BAs_en_la_avenida_Alfonso_Ugarte_cerca_del_plaza_Dos_de_Mayo.jpg",
+      "title": "2x1 en pasajes",
+      "valid_date":"xx/xx/xx",
+      "benefit": "Viaja 2 personas y paga 1"
+    },
+    {
+      "id": 7,
+      "img_url":"https://peruretail.sfo3.cdn.digitaloceanspaces.com/wp-content/uploads/pizza-3.jpg",
+      "title": "3 pizzas familiares",
+      "valid_date":"xx/xx/xx",
+      "benefit": "Americana + gaseosa + pizza rolls"
+    },
+    {
+      "id": 8,
+      "img_url":"https://peru21.pe/resizer/bodZRggxNDfCz6upbEVfpsLqUbk=/1200x800/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/WKLKU6YQTJEZJLSWM3CUZZ37AA.jpg",
+      "title": "3 pizzas familiares",
+      "valid_date":"xx/xx/xx",
+      "benefit": "1 pollo + porción de papas + ensalada + gaseosa de 3lts"
+    },
+    {
+      "id": 9,
+      "img_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/2017_Lima_-_Autob%C3%BAs_en_la_avenida_Alfonso_Ugarte_cerca_del_plaza_Dos_de_Mayo.jpg/1280px-2017_Lima_-_Autob%C3%BAs_en_la_avenida_Alfonso_Ugarte_cerca_del_plaza_Dos_de_Mayo.jpg",
+      "title": "2x1 en pasajes",
+      "valid_date":"xx/xx/xx",
+      "benefit": "Viaja 2 personas y paga 1"
+    },
+    {
+      "id": 10,
+      "img_url":"https://peruretail.sfo3.cdn.digitaloceanspaces.com/wp-content/uploads/pizza-3.jpg",
+      "title": "3 pizzas familiares",
+      "valid_date":"xx/xx/xx",
+      "benefit": "Americana + gaseosa + pizza rolls"
+    },
+    {
+      "id": 11,
+      "img_url":"https://peru21.pe/resizer/bodZRggxNDfCz6upbEVfpsLqUbk=/1200x800/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/WKLKU6YQTJEZJLSWM3CUZZ37AA.jpg",
+      "title": "3 pizzas familiares",
+      "valid_date":"xx/xx/xx",
+      "benefit": "1 pollo + porción de papas + ensalada + gaseosa de 3lts"
+    }
+  ],
+  "trips":[
+    {
+      "id":1,
+      "start_date":"2024-05-01T08:00:00",
+      "end_date":"2024-05-01T09:00:00"
+    },
+    {
+      "id":2,
+      "start_date":"2024-05-02T10:00:00",
+      "end_date":"2024-05-02T11:00:00"
+    },
+    {
+      "id":3,
+      "start_date":"2024-05-03T12:00:00",
+      "end_date":"2024-05-03T13:00:00"
+    },
+    {
+      "id":4,
+      "start_date":"2024-05-04T14:00:00",
+      "end_date":"2024-05-04T15:00:00"
+    },
+    {
+      "id":5,
+      "start_date":"2024-05-05T16:00:00",
+      "end_date":"2024-05-05T17:00:00"
+    }
+  ]
+}

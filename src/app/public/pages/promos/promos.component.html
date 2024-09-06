@@ -1,0 +1,23 @@
+<div class="container">
+  <h1 class="title">Promociones</h1>
+  <div class="row justify-content-center justify-content-xl-evenly">
+    <ng-container *ngFor="let promocion of promos; let i = index">
+      <div class="col-10 col-md-6 col-lg-4  col-xl-3 mb-5">
+        <mat-card class="card">
+          <img mat-card-image src="{{ promocion.img_url }}" alt="Promo Photo" class="card-image">
+          <mat-card-content class="card-content">
+            <h2 class="card-title">{{ promocion.title }}</h2>
+            <p class="card-description">{{ promocion.benefit }}</p>
+            <small class="card-date">Válido hasta: {{ promocion.valid_date }}</small>
+          </mat-card-content>
+          <mat-card-actions class="card-actions">
+            <button mat-flat-button color="primary" class="card-button">Canjear</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+      <div class="d-none d-lg-block" *ngIf="(i + 1) % 3 === 0"></div>
+    </ng-container>
+  </div>
+</div>
+
+

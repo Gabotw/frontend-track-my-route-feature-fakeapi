@@ -1,0 +1,69 @@
+<mat-toolbar class="toolbar">
+    <button mat-icon-button class="example-icon" aria-label="toolbar" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>{{location}}</span>
+</mat-toolbar>
+
+<mat-drawer-container class="sidenav-container">
+  <mat-drawer #drawer mode="side" [opened]="isDrawerOpen" class="sidenav">
+      <h1 class="title-side-nav">TrackMyRoute</h1>
+    <div class="sidenav-btn-container">
+        <button mat-button color="primary" class="sidenav-btn"
+                (click)="navigateTo('/sidebar/notifications', 'Notificaciones')"
+                [style.background-color]="selectedRoute === '/sidebar/notifications'? 'green' : 'white'"
+                [style.color]="selectedRoute === '/sidebar/notifications'? 'white' : 'black'">
+          <mat-icon class="icon-btn" aria-hidden="false" aria-label="notifications-icon" fontIcon="notifications"></mat-icon>
+          Notificaciones
+        </button>
+
+        <button mat-button color="primary" class="sidenav-btn"
+                (click)="navigateTo('/sidebar/search', 'Rutas');"
+                [style.background-color]="selectedRoute === '/sidebar/search'? 'green' : 'white'"
+                [style.color]="selectedRoute === '/sidebar/search'? 'white' : 'black'">
+          <mat-icon class="icon-btn" aria-hidden="false" aria-label="search_routes-icon" fontIcon="search"></mat-icon>
+          Buscar Rutas
+        </button>
+
+        <button mat-button color="primary" class="sidenav-btn"
+                (click)="navigateTo('/sidebar/promos', 'Promociones')"
+                [style.background-color]="selectedRoute ==='/sidebar/promos'? 'green' : 'white'"
+                [style.color]="selectedRoute ==='/sidebar/promos'? 'white' : 'black'">
+          <mat-icon class="icon-btn" aria-hidden="false" aria-label="search_routes-icon" fontIcon="loyalty"></mat-icon>
+          Promociones
+        </button>
+
+        <button mat-button color="primary" class="sidenav-btn"
+                (click)="navigateTo('/sidebar/history', 'Viajes')"
+                [style.background-color]="selectedRoute === '/sidebar/history'? 'green' : 'white'"
+                [style.color]="selectedRoute === '/sidebar/history'? 'white' : 'black'">
+          <mat-icon class="icon-btn" aria-hidden="false" aria-label="search_routes-icon" fontIcon="history"></mat-icon>
+          Historial de Viajes
+        </button>
+
+        <button mat-button color="primary" class="sidenav-btn"
+                (click)="navigateTo('/sidebar/help', 'Soporte')"
+                [style.background-color]="selectedRoute === '/sidebar/help'? 'green' : 'white'"
+                [style.color]="selectedRoute === '/sidebar/help'? 'white' : 'black'">
+          <mat-icon class="icon-btn" aria-hidden="false" aria-label="search_routes-icon" fontIcon="contact_support"></mat-icon>
+          Soporte y Ayuda
+        </button>
+
+        <button mat-button color="primary" class="sidenav-btn"
+                (click)="navigateTo('/sidebar/config', 'Configuración')"
+                [style.background-color]="selectedRoute === '/sidebar/config'? 'green' : 'white'"
+                [style.color]="selectedRoute === '/sidebar/config'? 'white' : 'black'">
+          <mat-icon class="icon-btn" aria-hidden="false" aria-label="search_routes-icon" fontIcon="settings"></mat-icon>
+          Configuración
+        </button>
+
+        <button mat-button color="warn"  class="sidenav-btn" (click)="navigateTo('/login', 'Login')">
+          <mat-icon class="icon-btn" aria-hidden="false" aria-label="search_routes-icon" fontIcon="logout"></mat-icon>
+          Cerrar Sesión
+        </button>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

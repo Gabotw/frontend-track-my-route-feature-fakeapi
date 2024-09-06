@@ -1,0 +1,125 @@
+.title{
+  font-family: "MuseoModerno", sans-serif ;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.subtitle{
+  font-family: "MuseoModerno", sans-serif ;
+  text-align: left;
+  margin: 20px 0 20px 20px;
+}
+
+.pay-ticket-container{
+  width: 75vw;
+  margin-left: 20px;
+}
+
+mat-label{
+  font-style: italic;
+}
+
+mat-form-field{
+  width: 300px
+}
+
+.select-container{
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+}
+
+.select-container p{
+  font-size: 20px;
+}
+
+#ticket-price{
+  font-size: 48px;
+  font-weight: bold;
+  font-style: italic;
+  color: #00933C;
+}
+
+.btn-container{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px;
+  margin-left: 20px;
+}
+
+.pay-method-container{
+  width: 75vw;
+}
+
+.payment-btn{
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 13px;
+  background-color: #00933C !important;
+  color: white !important;
+}
+
+.verification-btn{
+  font-weight: bold;
+  font-size: 13px;
+  background-color: #0066FF !important;
+  color: white !important;
+}
+
+@media (max-width: 768px) {
+  .title{
+    display: none;
+  }
+
+  .subtitle{
+    margin-top: 0;
+    font-size: 25px;
+  }
+
+  .pay-ticket-container{
+    margin: 10px 0 10px 10px;
+    width: 95vw;
+  }
+
+  mat-label{
+    font-style: italic;
+  }
+
+  mat-form-field{
+    width: 150px;
+  }
+
+  .select-container{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .select-container p{
+    font-size: 15px;
+    flex: 1;
+  }
+
+  .form{
+    width: 150px;
+  }
+
+  #ticket-price{
+    font-size: 30px;
+  }
+
+  .btn-container{
+    display: block;
+    text-align: center;
+  }
+
+  .payment-btn{
+    margin: 10px 10px 15px 0;
+  }
+
+  .verification-btn{
+    margin: 10px 0 15px 0;
+  }
+}

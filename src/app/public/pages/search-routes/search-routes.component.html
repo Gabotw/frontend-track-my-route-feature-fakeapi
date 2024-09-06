@@ -1,0 +1,23 @@
+<div class="container">
+    <h1 class="title">Busca tu ruta</h1>
+    <div class="map-container">
+        <google-map height="400px"
+                    width="100%"
+                    [options]="options">
+            @if (directionsResults$ | async; as directionsResults) {
+                <map-directions-renderer [directions]="directionsResults"/>
+            }
+            <map-heatmap-layer></map-heatmap-layer>
+            <map-traffic-layer></map-traffic-layer>
+        </google-map>
+    </div>
+
+    <div class="map-btn">
+        <mat-radio-group [(ngModel)]="selectedCoordinates" (change)="onChangeCoordinates($event)">
+            <mat-radio-button value="ruta01">Bus 01</mat-radio-button>
+            <mat-radio-button value="ruta02">Bus 02</mat-radio-button>
+            <mat-radio-button value="ruta03">Bus 03</mat-radio-button>
+        </mat-radio-group>
+    </div>
+
+</div>

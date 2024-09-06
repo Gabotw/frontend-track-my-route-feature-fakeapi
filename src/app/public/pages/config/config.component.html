@@ -1,0 +1,40 @@
+<h1 class="title">Configuración</h1>
+
+<mat-card class="configuration-card">
+    <div class="content-container">
+        <div class="left-section">
+            <mat-card-header>
+                <div mat-card-avatar class="profile-image"></div>
+            </mat-card-header>
+            <mat-card-title>Plan Actual</mat-card-title>
+            <mat-card-subtitle>
+                Free <button mat-button class="change-plan-button">Cambiar Plan</button>
+            </mat-card-subtitle>
+        </div>
+        <div class="right-section">
+            <mat-card-content>
+                <h6 class="complete-name">{{first_name}} {{ last_name }} </h6>
+            </mat-card-content>
+        </div>
+    </div>
+    <button mat-button class="adjust-button" *ngIf="!isEditable" (click)="isEditable=true">Cambiar ajustes de usuario</button>
+    <button mat-button class="save-button" *ngIf="isEditable" (click)="isEditable=false">Guardar</button>
+    <div class="edit-container">
+        <mat-card-content *ngIf="isEditable">
+            <mat-form-field appearance="outline" class="edit-container-input">
+                <mat-label>First Name</mat-label>
+                <input matInput [(ngModel)]="first_name"/>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="edit-container-input">
+                <mat-label>Last Name</mat-label>
+                <input matInput [(ngModel)]="last_name"/>
+            </mat-form-field>
+
+            <mat-form-field  appearance="outline" class="edit-container-input">
+                <mat-label>Email Address</mat-label>
+                <input matInput [(ngModel)]="email"/>
+            </mat-form-field>
+        </mat-card-content>
+    </div>
+</mat-card>

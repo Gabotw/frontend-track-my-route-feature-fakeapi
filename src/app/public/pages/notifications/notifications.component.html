@@ -1,0 +1,58 @@
+<div class="title-container" style="text-align: center">
+  <h1 class="title">Notificaciones recientes</h1>
+</div>
+
+<div class="notifications-container">
+  <mat-card class="card" *ngFor="let notif of notifications">
+      <mat-card-header>
+          <mat-card-title-group>
+              <mat-card-title class="card-title"> {{ notif.title }} </mat-card-title>
+              <mat-card-subtitle class="card-subtitle"> {{ notif.subtitle }} </mat-card-subtitle>
+              <img mat-card-lg-image alt="img" src="{{notif.img_url}}" >
+          </mat-card-title-group>
+      </mat-card-header>
+      <mat-card-content class="notification-content">
+          {{notif.description}}
+      </mat-card-content>
+      <button mat-button color="warn">Eliminar</button>
+  </mat-card>
+
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title class="card-title">Aviso! </mat-card-title>
+        <mat-card-subtitle class="card-subtitle">Paradero inhabilitado</mat-card-subtitle>
+        <img mat-card-lg-image alt="img" src="https://www.cajonsmadein.com/blog/wp-content/uploads/2018/10/av-pierola-near-plaza-2-de-mayo-lima-peru.jpg" >
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content class="notification-content">
+      {{notification}}
+    </mat-card-content>
+    <button mat-button color="warn">Eliminar</button>
+  </mat-card>
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title class="card-title">Aviso! </mat-card-title>
+        <mat-card-subtitle class="card-subtitle">Trafico detectado</mat-card-subtitle>
+        <img mat-card-lg-image alt="img" src="https://e.rpp-noticias.io/xlarge/2019/08/02/383838_824088.jpg" >
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content class="notification-content">
+      {{notification2}}
+    </mat-card-content>
+    <button mat-button color="warn">Eliminar</button>
+  </mat-card>
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title class="card-title">Actualización de la aplicación! </mat-card-title>
+        <mat-card-subtitle class="card-subtitle">Actualización de Software</mat-card-subtitle>
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content class="notification-content">
+      {{notification3}}
+    </mat-card-content>
+    <button mat-button color="warn">Eliminar</button>
+  </mat-card>
+</div>

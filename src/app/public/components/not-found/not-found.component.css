@@ -1,0 +1,28 @@
+.not-found-icon{
+    font-size: 150px;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+}
+
+h1{
+    font-weight: bold;
+}
+
+.center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: "Montserrat", sans-serif;
+}
+
+@media (max-width: 768px) {
+    .center{
+        width: 100vw;
+    }
+    h1{
+        font-size: 40px;
+    }
+}
