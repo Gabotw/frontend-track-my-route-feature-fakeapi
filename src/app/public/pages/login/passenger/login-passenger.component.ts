@@ -1,6 +1,6 @@
 
 // src/app/login/login_passenger.component.ts
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
@@ -8,7 +8,11 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
+import {NgIf} from "@angular/common";
+import {BaseFormComponent} from "../../../../shared/components/base-form.component";
+import {AuthenticationService} from "../../../../iam/services/authentication.service";
+import {SignInRequest} from "../../../../iam/model/sign-in.request";
 
 
 @Component({
@@ -19,24 +23,34 @@ import { Router } from '@angular/router';
     MatCheckboxModule,
     MatButtonModule,
     MatIconModule,
-    ReactiveFormsModule ],
+    ReactiveFormsModule, RouterLink, NgIf],
   templateUrl: './login-passenger.component.html',
   styleUrls: ['./login-passenger.component.scss']
 })
-export class LoginPassengerComponent {
-  loginForm: FormGroup = this.fb.group({
-    username: ['', Validators.required],
-    password: ['', Validators.required],
-    remember: false
-  });
+export class LoginPassengerComponent extends BaseFormComponent implements OnInit {
+  loginForm! : FormGroup;
   hide = true;
+  submitted = false;
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(private builder: FormBuilder, private router: Router, private authenticationService: AuthenticationService) {
+    super();
+  }
+
+  ngOnInit(): void {
+    this.loginForm = this.builder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+      remember: false
+    });
+  }
 
   onSubmit() {
     if (this.loginForm.valid) {
-      console.log('Form data', this.loginForm.value);
-      // Implement your login logic here
+      let username = this.loginForm.value.username;
+      let password = this.loginForm.value.password;
+      const signInRequest = new SignInRequest(username, password);
+      this.authenticationService.signIn(signInRequest);
+      this.submitted = true;
     }
   }
 

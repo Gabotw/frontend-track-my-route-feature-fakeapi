@@ -1,0 +1,46 @@
+<h1 class="title">Seleccionar Ruta</h1>
+
+<div class="select-route-container">
+    <div class="form-container">
+        <div class="select-container">
+            <p>Seleccionar Ruta:</p>
+            <mat-form-field appearance="outline" class="form">
+                <mat-label>---Seleccionar Ruta---</mat-label>
+                <mat-select  [(value)]="selectedBus">
+                    <mat-option *ngFor="let bus of buses" [value]="bus">
+                        {{bus.bus_name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="select-container">
+            <p>Selecciona Unidad:</p>
+            <mat-form-field appearance="outline" class="form">
+                <mat-label>---Seleccionar Unidad---</mat-label>
+                <mat-select [(value)]="selectedBusStopOrigin">
+                    <mat-option *ngFor="let bus_stop of selectedBus?.bus_stops" [value]="bus_stop">
+                        {{bus_stop.stop_name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="save-container">
+        <button mat-flat-button mat-raised-button color="primary"
+                class="save-btn">Guardar</button>
+    </div>
+
+    <div style="margin-top: -1vh">
+        <google-map height="350px" width="100%">
+            <map-heatmap-layer></map-heatmap-layer>
+            <map-traffic-layer></map-traffic-layer>
+        </google-map>
+    </div>
+</div>
+
+
+
+
+

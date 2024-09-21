@@ -14,26 +14,27 @@
         <mat-form-field class="form-input" appearance="outline">
           <mat-label>Usuario</mat-label>
           <input matInput formControlName="username">
+            <mat-error *ngIf="isInvalidControl(loginForm, 'username')">{{ errorMessagesForControl(loginForm, 'username') }}
+            </mat-error>
         </mat-form-field>
         <mat-form-field class="form-input" appearance="outline" >
           <mat-label>Contraseña</mat-label>
           <input matInput [type]="hide ? 'password' : 'password'" formControlName="password">
-          <button mat-icon-button matSuffix (click)="hide = !hide">
-          </button>
+            <mat-error *ngIf="isInvalidControl(loginForm, 'password')">{{ errorMessagesForControl(loginForm, 'password') }}
+            </mat-error>
         </mat-form-field>
           <div class="extra-options">
               <mat-checkbox formControlName="remember">Recuérdame</mat-checkbox>
               <a (click)="redirectToRecoverPassword()" class="link">¿Olvidaste tu contraseña?</a>
           </div>
+          <div class="login-redirect-container">
+              <button mat-raised-button color="primary" class="login-button">Ingresar</button>
+          </div>
+      </form>
 
-        <div class="login-redirect-container">
-            <button mat-raised-button color="primary" type="submit" class="login-button" (click)="redirectToApp()">Ingresar</button>
-            <span>¿Aún no tienes una cuenta?
+        <span>¿Aún no tienes una cuenta?
                 <a class="link" (click)="redirectToRegister()"> Regístrate Aquí</a>
             </span>
-
-        </div>
-      </form>
     </mat-card-content>
       <button mat-button color="primary" type="submit" class="back-button" (click)="redirectToSelectType()">
           <mat-icon aria-hidden="false" aria-label="back-icon" fontIcon="arrow_back"></mat-icon>

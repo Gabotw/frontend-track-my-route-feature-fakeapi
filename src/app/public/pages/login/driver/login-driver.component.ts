@@ -25,7 +25,7 @@ export class LoginDriverComponent {
   }
 
   redirectToApp(){
-    this.router.navigateByUrl('/sidebar/notifications');
+    this.router.navigateByUrl('/driver/select-route');
   }
   redirectToRegister() {
     this.router.navigateByUrl('/register/driver');

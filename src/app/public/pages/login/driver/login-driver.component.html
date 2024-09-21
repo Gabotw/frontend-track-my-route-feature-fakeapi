@@ -21,19 +21,19 @@
                     <button mat-icon-button matSuffix (click)="hide = !hide">
                     </button>
                 </mat-form-field>
-                <div class="extra-options">
-                    <mat-checkbox formControlName="remember">Recuérdame</mat-checkbox>
-                    <a (click)="redirectToRecoverPassword()" class="link">¿Olvidaste tu contraseña?</a>
-                </div>
+            </form>
+            <div class="extra-options">
+                <mat-checkbox formControlName="remember">Recuérdame</mat-checkbox>
+                <a (click)="redirectToRecoverPassword()" class="link">¿Olvidaste tu contraseña?</a>
+            </div>
 
-                <div class="login-redirect-container">
-                    <button mat-raised-button color="primary" type="submit" class="login-button" (click)="redirectToApp()">Ingresar</button>
-                    <span>¿Aún no tienes una cuenta?
+            <div class="login-redirect-container">
+                <button mat-raised-button color="primary" type="submit" class="login-button" (click)="redirectToApp()">Ingresar</button>
+                <span>¿Aún no tienes una cuenta?
                 <a class="link" (click)="redirectToRegister()"> Regístrate Aquí</a>
             </span>
 
-                </div>
-            </form>
+            </div>
         </mat-card-content>
         <button mat-button color="primary" type="submit" class="back-button" (click)="redirectToSelectType()">
             <mat-icon aria-hidden="false" aria-label="back-icon" fontIcon="arrow_back"></mat-icon>

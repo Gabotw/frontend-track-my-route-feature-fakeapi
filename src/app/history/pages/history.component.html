@@ -1,0 +1,32 @@
+<h1 class="title">Rutas habituales</h1>
+<div class="history-table-container">
+    <table mat-table [dataSource]="dataSource" class="history-table">
+
+        <ng-container matColumnDef="origen">
+            <th mat-header-cell *matHeaderCellDef>Origen</th>
+            <td mat-cell *matCellDef="let element">{{element.origin}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="destino">
+            <th mat-header-cell *matHeaderCellDef>Destino</th>
+            <td mat-cell *matCellDef="let element">{{element.destination}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="hora">
+            <th mat-header-cell *matHeaderCellDef>Hora de partida</th>
+            <td mat-cell *matCellDef="let element">{{element.time}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="pasaje">
+            <th mat-header-cell *matHeaderCellDef>Pasaje</th>
+            <td mat-cell *matCellDef="let element">{{element.fare}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row
+            [class.bold]="isRowClicked(element)"
+            (click)="rowClicked(element)"
+            *matRowDef="let element; columns: displayedColumns;">
+        </tr>
+    </table>
+</div>

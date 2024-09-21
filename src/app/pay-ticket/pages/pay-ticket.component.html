@@ -1,0 +1,58 @@
+<h1 class="title">Pagar Pasaje</h1>
+
+<div class="pay-ticket-container">
+    <div class="form-container">
+        <div class="select-container">
+            <p>Seleccionar Bus:</p>
+            <mat-form-field appearance="outline" class="form">
+                <mat-label>---Seleccionar Bus---</mat-label>
+                <mat-select  [(value)]="selectedBus">
+                    <mat-option *ngFor="let bus of buses" [value]="bus">
+                        {{bus.bus.busName}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="select-container">
+            <p>Selecciona Paradero de Origen:</p>
+            <mat-form-field appearance="outline" class="form">
+                <mat-label>---Seleccionar Origen---</mat-label>
+                <mat-select [(value)]="selectedBusStopOrigin">
+                    <mat-option *ngFor="let bus_stop of buses" [value]="bus_stop">
+                        {{bus_stop.origin.originLongitude}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="select-container">
+            <p>Selecciona Paradero de Destino:</p>
+            <mat-form-field appearance="outline" class="form">
+                <mat-label>---Seleccionar Destino---</mat-label>
+                <mat-select [(value)]="selectedBusStopDestination">
+                    <mat-option *ngFor="let bus_stop of buses" [value]="bus_stop">
+                        {{bus_stop.destination.destinationLongitude}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+    <div class="select-container">
+      <p>Total a Pagar:</p>
+      <p id="ticket-price">S/ 2.50</p>
+    </div>
+  </div>
+</div>
+
+<h2 class="subtitle">Pagar con:</h2>
+<div class="pay-method-container">
+
+    <div class="btn-container">
+        <button mat-flat-button mat-raised-button color="primary" class="payment-btn">Tarjeta de Débito/Crédito</button>
+        <button mat-flat-button mat-raised-button color="primary" class="payment-btn">Yape</button>
+        <button mat-flat-button mat-raised-button color="primary" class="payment-btn">Plin</button>
+        <button mat-flat-button mat-raised-button color="primary" class="payment-btn">Paypal</button>
+        <button mat-flat-button mat-raised-button color="accent" class="verification-btn">Generar Codigo de Verificación</button>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<mat-toolbar class="toolbar">
+    <button mat-icon-button class="example-icon" aria-label="toolbar" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>{{location}}</span>
+</mat-toolbar>
+
+<mat-drawer-container class="sidenav-container">
+    <mat-drawer #drawer mode="side" [opened]="isDrawerOpen" class="sidenav">
+        <h1 class="title-side-nav">TrackMyRoute</h1>
+        <div class="sidenav-btn-container">
+            <button mat-button color="primary" class="sidenav-btn"
+                    (click)="navigateTo('/driver/select-route', 'Select Route')"
+                    [style.background-color]="selectedRoute === '/driver/select-route'? '#FFC700' : 'white'"
+                    [style.color]="selectedRoute === '/driver/select-route'? 'white' : 'black'">
+                <mat-icon class="icon-btn" aria-hidden="false" aria-label="notifications-icon" fontIcon="departure_board"></mat-icon>
+                Seleccionar Ruta
+            </button>
+
+            <button mat-button color="primary" class="sidenav-btn"
+                    (click)="navigateTo('/driver/config', 'Configuración')"
+                    [style.background-color]="selectedRoute === '/driver/config'? '#FFC700' : 'white'"
+                    [style.color]="selectedRoute === '/driver/config'? 'white' : 'black'">
+                <mat-icon class="icon-btn" aria-hidden="false" aria-label="search_routes-icon" fontIcon="settings"></mat-icon>
+                Configuración
+            </button>
+
+            <button mat-button color="warn"  class="sidenav-btn" (click)="navigateTo('/login', 'Login')">
+                <mat-icon class="icon-btn" aria-hidden="false" aria-label="search_routes-icon" fontIcon="logout"></mat-icon>
+                Cerrar Sesión
+            </button>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>
