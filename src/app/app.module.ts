@@ -39,6 +39,7 @@ import { AuthenticationSectionComponent } from './iam/components/authentication-
 import { SignInComponent } from './iam/pages/sign-in/sign-in.component';
 import { SignUpComponent } from './iam/pages/sign-up/sign-up.component';
 import { AuthenticationInterceptor } from "./iam/services/authentication.interceptor";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
