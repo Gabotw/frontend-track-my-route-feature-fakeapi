@@ -18,7 +18,7 @@
         </div>
     </div>
     <button mat-button class="adjust-button" *ngIf="!isEditable" (click)="isEditable=true">Cambiar ajustes de usuario</button>
-    <button mat-button class="save-button" *ngIf="isEditable" (click)="isEditable=false">Guardar</button>
+    <button mat-button class="save-button" *ngIf="isEditable" (click)="saveChanges()">Guardar</button>
     <div class="edit-container">
         <mat-card-content *ngIf="isEditable">
             <mat-form-field appearance="outline" class="edit-container-input">
