@@ -55,6 +55,7 @@ import { AuthenticationInterceptor } from "./iam/services/authentication.interce
     SignUpComponent
   ],
     imports: [
+        HttpClientModule,
         BrowserModule,
         AppRoutingModule,
         ConfigComponent,
