@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PayTicketComponent } from './pay-ticket/pages/pay-ticket.component';
 import { HistoryComponent } from './history/pages/history.component';
 import { ConfigComponent } from './public/pages/config/config.component';
 import {NotificationsComponent} from './notifications/pages/notifications.component';
