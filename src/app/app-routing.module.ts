@@ -31,7 +31,6 @@ export const routes: Routes = [
             { path: 'config', component: ConfigComponent },
         ]},
     { path: 'sidebar', component: SideBarComponent, children: [
-            { path: 'pay-ticket', component: PayTicketComponent },
             { path: 'notifications', component: NotificationsComponent },
             { path: 'search', component: SearchRoutesComponent },
             { path: 'promos', component: PromosComponent },
