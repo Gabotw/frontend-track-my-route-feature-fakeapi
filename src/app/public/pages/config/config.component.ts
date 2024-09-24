@@ -23,7 +23,7 @@ export class ConfigComponent {
   isEditable: boolean = false;
 
   // URL base para el backend
-  private serverBasePath: string = 'https://abbc-2800-200-e670-1e5-cc94-371c-a026-8108.ngrok-free.app/api/v1';
+  private serverBasePath: string = 'https://9842-2800-200-e670-1e5-cc94-371c-a026-8108.ngrok-free.app/api/v1';
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {} // Inyectar HttpClient
 
