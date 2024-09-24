@@ -1,25 +1,43 @@
-.title{
-  font-family: "MuseoModerno", sans-serif;
-  margin-top: 10px;
-}
-
-.card {
-  margin-top: 3px;
+.article-card {
+  margin: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
   width: 95%;
-  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
-.card-title{
+.article-card:hover {
+  transform: scale(1.03);
+}
+
+.mat-card-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.content-left {
+  flex: 0 0 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-right {
+  flex: 0 0 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-image {
+  max-width: 100%;
+  height: auto;
+}
+h1 {
+  text-align: center;
   font-family: "MuseoModerno", sans-serif;
-  color: red;
-}
-
-.card-subtitle{
-  color: black;
-}
-
-@media (max-width: 768px) {
-  .title{
-    display: none;
-  }
 }
