@@ -10,9 +10,26 @@
             <mat-icon>search</mat-icon>
         </button>
     </div>
-    <button mat-flat-button mat-raised-button color="primary" class="contact-btn">
+
+    <!-- Botón para contactar por WhatsApp -->
+    <a mat-flat-button mat-raised-button color="primary" class="contact-btn" href="https://wa.me/51999808893?text=Hola,%20necesito%20ayuda!">
         <span>Contactar a un asesor por Whatsapp</span>
         <mat-icon>call</mat-icon>
-    </button>
-</div>
+    </a>
 
+    <!-- Campos para enviar correo -->
+    <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Asunto</mat-label>
+        <input matInput [(ngModel)]="subject" placeholder="Escribe el asunto">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="example-full-width">
+        <mat-label>Contenido</mat-label>
+        <textarea matInput [(ngModel)]="content" placeholder="Escribe el contenido" rows="4"></textarea>
+    </mat-form-field>
+
+    <!-- Botón para enviar el correo -->
+    <a [href]="getMailToLink()" mat-flat-button mat-raised-button color="primary" class="contact-btn">
+        <span>Enviar</span>
+    </a>
+</div>
