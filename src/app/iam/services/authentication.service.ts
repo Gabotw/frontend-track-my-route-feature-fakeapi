@@ -76,6 +76,7 @@ export class AuthenticationService {
             this.signedInUserId.next(response.id);
             this.signedInUsername.next(response.username);
             localStorage.setItem('token', response.token);
+            localStorage.setItem('profileId', response.id.toString());
             console.log(`Signed in as ${response.username} with token ${response.token}`);
             this.router.navigate(['/sidebar/notifications']).then();
           },
@@ -97,6 +98,7 @@ export class AuthenticationService {
     this.signedInUserId.next(0);
     this.signedInUsername.next('');
     localStorage.removeItem('token');
+    localStorage.removeItem('profileId')
     this.router.navigate(['/sign-in']).then();
   }
 

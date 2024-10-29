@@ -41,6 +41,7 @@ import { SignUpComponent } from './iam/pages/sign-up/sign-up.component';
 import { AuthenticationInterceptor } from "./iam/services/authentication.interceptor";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 
+
 @NgModule({
   declarations: [
     AppComponent,

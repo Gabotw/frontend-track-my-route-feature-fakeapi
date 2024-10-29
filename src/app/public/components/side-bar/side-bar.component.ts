@@ -72,4 +72,12 @@ export class SideBarComponent {
 
     }
 
+    // Método para hacer logout
+    logout() {
+        //console.log("Cerrando sesión...");
+        localStorage.removeItem('profileId');
+        localStorage.removeItem('token');
+        //console.log('ID del perfil después del logout:', localStorage.getItem('profileId'));
+        this.router.navigate(['/login']);
+    }
 }
