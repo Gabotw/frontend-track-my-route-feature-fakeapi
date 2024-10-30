@@ -27,6 +27,7 @@ export class AuthenticationService {
   private signedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   private signedInUserId: BehaviorSubject<number> = new BehaviorSubject<number>(0);
   private signedInUsername: BehaviorSubject<string> = new BehaviorSubject<string>('');
+    private loginError: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null); // Para manejar errores
 
   constructor(private router: Router, private http: HttpClient) { }
 
@@ -43,17 +44,20 @@ export class AuthenticationService {
     return this.signedInUsername.asObservable();
   }
 
+  get currentLoginError() {
+        return this.loginError.asObservable(); // Exponer el error de login
+  }
   /**
    * Sign up a new user
    * @param signUpRequest - The sign-up request containing the username and password
    * @returns - The sign-up response containing the user id and username
    */
-  signUp(signUpRequest: SignUpRequest) {
+  signUp(signUpRequest: SignUpRequest , redirectTo: string) {
     return this.http.post<SignUpResponse>(`${this.basePath}/authentication/sign-up`, signUpRequest, this.httpOptions)
         .subscribe( {
           next: (response) => {
-            console.log(`Signed up as ${response.username} with id ${response.id}`);
-            this.router.navigate(['login/passenger']).then();
+              console.log(`Signed up as ${response.username} with id ${response.id}`);
+              this.router.navigate([redirectTo]).then(); // Redirige a la ruta especificada
           },
           error: (error) => {
             console.error(`Error while signing up: ${error}`);
@@ -78,7 +82,35 @@ export class AuthenticationService {
             localStorage.setItem('token', response.token);
             localStorage.setItem('profileId', response.id.toString());
             console.log(`Signed in as ${response.username} with token ${response.token}`);
-            this.router.navigate(['/sidebar/notifications']).then();
+
+            // Llamar al endpoint para obtener el rol del usuario
+            this.http.get<{ id: number, username: string, roles: string[] }>(`${this.basePath}/users/${response.id}`,
+                { headers: new HttpHeaders({ 'Authorization': `Bearer ${localStorage.getItem('token')}` }) })
+                .subscribe(userResponse => {
+                  // Guardar el rol en localStorage o en una variable
+                  const role = userResponse.roles[0]; // Supongamos que el primer rol es el que queremos
+                  localStorage.setItem('userRole', role);
+
+                    // Verificar si el usuario está en la ruta /login/driver y tiene el rol ROLE_USER
+                    if (role === 'ROLE_USER' && this.router.url === '/login/driver') {
+                        this.loginError.next("NO PUEDES INICIAR SESION CON ESE TIPO DE USUARIO"); // Emitir el error
+                        this.signedIn.next(false); // Cambiar el estado a no firmado
+                        return; // No continuar con el flujo
+                    }else if (role === 'ROLE_ADMIN' && this.router.url === '/login/passenger') {
+                        this.loginError.next("NO PUEDES INICIAR SESION CON ESE TIPO DE USUARIO"); // Emitir el error
+                        this.signedIn.next(false); // Cambiar el estado a no firmado
+                        return; // No continuar con el flujo
+                    }
+
+
+                  // Redirigir según el rol
+                  if (role === 'ROLE_ADMIN') {
+                    this.router.navigate(['/driver/select-route']).then();
+                  } else if (role === 'ROLE_USER') {
+                    this.router.navigate(['/sidebar/notifications']).then(); // Cambia a la ruta correspondiente para ROL_USER
+                  }
+                });
+
           },
           error: (error) => {
             console.error(`Error while signing in: ${error}`);
@@ -99,6 +131,7 @@ export class AuthenticationService {
     this.signedInUsername.next('');
     localStorage.removeItem('token');
     localStorage.removeItem('profileId')
+    localStorage.removeItem('userRole'); // Limpiar el rol
     this.router.navigate(['/sign-in']).then();
   }
 

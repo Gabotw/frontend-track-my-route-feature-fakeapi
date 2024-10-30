@@ -48,8 +48,6 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     RecoverPasswordComponent,
     NotFoundComponent,
     LoginTypeSelectionComponent,
-    RegisterDriverComponent,
-    LoginDriverComponent,
     SideBarDriverComponent,
     SelectRouteComponent,
     AuthenticationSectionComponent,
@@ -96,7 +94,9 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
         GoogleMap,
         MapDirectionsRenderer,
         MapHeatmapLayer,
-        MapTrafficLayer
+        MapTrafficLayer,
+        RegisterDriverComponent,
+        LoginDriverComponent
     ],
   providers: [
     provideAnimationsAsync(),
