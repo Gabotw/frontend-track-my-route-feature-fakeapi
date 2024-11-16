@@ -81,3 +81,34 @@
     margin-top: 20px;
   }
 }
+
+.adjust-button {
+  background-color: #0066FF;
+  color: white;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px; /* Agrega margen inferior */
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-family: "MuseoModerno", sans-serif;
+  border: none;
+  cursor: pointer;
+}
+
+.btn.btn-danger {
+  background-color: #0066FF; /* Azul similar */
+  color: white; /* Texto en blanco */
+  font-weight: bold; /* Texto en negrita */
+  font-family: "MuseoModerno", sans-serif; /* Fuente consistente */
+  border: none; /* Sin bordes */
+  border-radius: 25px; /* Bordes redondeados */
+  padding: 10px 20px; /* Espaciado interno */
+  cursor: pointer; /* Cambia el cursor a puntero */
+  margin-top: 10px; /* Margen superior para separación */
+  transition: background-color 0.3s ease; /* Animación de transición */
+}
+
+.btn.btn-danger:hover {
+  background-color: #004CBA; /* Azul más oscuro en hover */
+}
+

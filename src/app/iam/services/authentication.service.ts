@@ -81,7 +81,7 @@ export class AuthenticationService {
             this.signedInUsername.next(response.username);
             localStorage.setItem('token', response.token);
             localStorage.setItem('profileId', response.id.toString());
-            console.log(`Signed in as ${response.username} with token ${response.token}`);
+            localStorage.setItem('username', response.username); // Aquí guardamos el username
 
             // Llamar al endpoint para obtener el rol del usuario
             this.http.get<{ id: number, username: string, roles: string[] }>(`${this.basePath}/users/${response.id}`,
@@ -132,6 +132,7 @@ export class AuthenticationService {
     localStorage.removeItem('token');
     localStorage.removeItem('profileId')
     localStorage.removeItem('userRole'); // Limpiar el rol
+      localStorage.removeItem('username');
     this.router.navigate(['/sign-in']).then();
   }
 

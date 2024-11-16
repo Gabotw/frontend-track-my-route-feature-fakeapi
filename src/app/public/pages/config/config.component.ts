@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormField, MatLabel } from "@angular/material/form-field";
@@ -7,9 +7,8 @@ import { FormsModule } from "@angular/forms";
 import { MatInput } from "@angular/material/input";
 import { HttpClient } from '@angular/common/http'; // Importar HttpClient
 import { Observable } from 'rxjs';
-import {MatSnackBar} from "@angular/material/snack-bar"; // Importar Observable para manejar la respuesta
+import { MatSnackBar } from "@angular/material/snack-bar"; // Importar Observable para manejar la respuesta
 import { HttpHeaders } from '@angular/common/http';
-
 
 @Component({
   selector: 'app-config',
@@ -18,7 +17,7 @@ import { HttpHeaders } from '@angular/common/http';
   standalone: true,
   imports: [MatCardModule, MatButtonModule, MatFormField, NgIf, FormsModule, MatInput, MatLabel],
 })
-export class ConfigComponent implements OnInit{
+export class ConfigComponent implements OnInit {
   first_name: string = "Nombre";
   email: string = "Email";
   last_name: string = "Apellido";
@@ -41,10 +40,6 @@ export class ConfigComponent implements OnInit{
     const profileIdFromStorage = localStorage.getItem('profileId');
     this.userId = profileIdFromStorage ? +profileIdFromStorage : 0;
 
-
-    //console.log("ID recuperado del almacenamiento:", this.userId);
-    //console.log("URL:", `${this.serverBasePath}/profiles/${(this.userId)}`);
-
     if (this.userId !== 0) {
       this.loadUserProfile(); // Si hay un userId, cargar el perfil
     } else {
@@ -64,8 +59,6 @@ export class ConfigComponent implements OnInit{
     // Obtener el perfil del usuario usando el userId
     this.http.get<any>(`${this.serverBasePath}/profiles/${this.userId}`, { headers }).subscribe(
         response => {
-          // Asignar los datos obtenidos a las propiedades
-          //console.log("Datos del perfil recibidos:", response);
           const names = response.fullName.split(' ');
           this.first_name = names[0]; // Primer nombre
           this.last_name = names.slice(1).join(' '); // El resto como apellido
@@ -106,7 +99,6 @@ export class ConfigComponent implements OnInit{
     // Usar PUT para actualizar el perfil utilizando userId
     this.http.put<any>(`${this.serverBasePath}/profiles/${this.userId}`, profileData, { headers }).subscribe(
         response => {
-          //console.log("Perfil actualizado exitosamente", response);
           this.isEditable = false; // Cambiar a no editable después de guardar
           this.snackBar.open('Cambios guardados exitosamente', 'Cerrar', {
             duration: 3000,
@@ -126,4 +118,48 @@ export class ConfigComponent implements OnInit{
   toggleEdit() {
     this.isEditable = !this.isEditable; // Alterna el modo editable
   }
+
+  // Método para eliminar la cuenta del usuario
+  deleteAccount(): void {
+    
+
+    const confirmation = confirm('¿Estás seguro de que deseas eliminar tu cuenta? Esta acción no se puede deshacer.');
+    if (confirmation) {
+      const token = localStorage.getItem('token');
+      const username = localStorage.getItem('username'); // Obtener el username
+
+      if (!token || !username) {
+        this.snackBar.open('Error: No se encontró un token válido o un nombre de usuario.', 'Cerrar', { duration: 3000 });
+        return;
+      }
+
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+
+      console.log('Token enviado:', token);
+      console.log('Username enviado:', username);
+
+      // Cambiar el endpoint para usar username en lugar de userId
+      this.http.delete(`${this.serverBasePath}/users/${username}`, { headers }).subscribe(
+          () => {
+            this.snackBar.open('Cuenta eliminada exitosamente.', 'Cerrar', { duration: 3000 });
+            localStorage.clear(); // Limpiar el almacenamiento local
+            window.location.href = '/login'; // Redirigir al usuario a la página de inicio de sesión
+          },
+          error => {
+            console.error('Error al eliminar la cuenta:', error);
+            if (error.status === 401) {
+              this.snackBar.open('No autorizado. Por favor, inicia sesión nuevamente.', 'Cerrar', { duration: 3000 });
+              localStorage.clear();
+              window.location.href = '/login';
+            } else {
+              this.snackBar.open('Error al eliminar la cuenta. Inténtalo de nuevo.', 'Cerrar', { duration: 3000 });
+            }
+          }
+      );
+    }
+  }
+
+
 }
