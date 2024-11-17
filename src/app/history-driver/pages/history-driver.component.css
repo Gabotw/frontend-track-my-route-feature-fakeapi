@@ -1,0 +1,65 @@
+.history-table-container {
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.demo-row-is-clicked {
+    font-weight: bold;
+}
+.title{
+    font-family: "MuseoModerno", sans-serif ;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.history-table {
+    height: 100px;
+}
+
+.history-table th {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #FFC700;
+    color: white;
+}
+
+.history-table td {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    width: 20%;
+}
+
+@media (max-width: 768px) {
+    .title{
+        display: none;
+    }
+
+    .history-table-container {
+        width: 100%;
+        max-width: none;
+    }
+
+    .history-table {
+        margin-top: 30px;
+    }
+}
+
+.button-container {
+    display: flex;          /* Habilitar flexbox para el botón */
+    justify-content: flex-end; /* Mover el botón hacia la derecha */
+    width: 100%;            /* Asegurarse de que ocupe todo el ancho */
+    margin-top: 10px;       /* Añadir espacio entre el título y el botón */
+}
+
+.add-button {
+    color: white; /* Letra blanca */
+    background-color: #FFC700; /* Fondo amarillo */
+    width: 20%;
+    margin-right: 15%;
+    margin-bottom: 1%;
+; /* Espaciado opcional para separar del borde */
+}
+
+.add-button:hover {
+    background-color: #FFC900; /* Un tono más oscuro de amarillo para el hover */
+}

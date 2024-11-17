@@ -1,0 +1,76 @@
+.title{
+    font-family: "MuseoModerno", sans-serif ;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 400px;
+}
+
+.card-image{
+    height: 180px;
+    width: 100%;
+}
+
+.card-content{
+    overflow-y: auto;
+    flex: 1;
+}
+
+.card-title{
+    font-size: 30px;
+    font-weight: bolder;
+    flex: 0 0 auto;
+}
+
+.card-description{
+
+}
+
+.card-date{
+
+}
+
+.card-actions{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.card-button{
+    width: 100%;
+    flex: 1;
+}
+
+.dialog{
+    padding: 40px;
+}
+
+@media (max-width: 768px) {
+    .title{
+        display:none;
+    }
+}
+
+.button-container {
+    display: flex;          /* Habilitar flexbox para el botón */
+    justify-content: flex-end; /* Mover el botón hacia la derecha */
+    width: 100%;            /* Asegurarse de que ocupe todo el ancho */
+    margin-top: 10px;
+    margin-bottom: 20px;/* Añadir espacio entre el título y el botón */
+}
+
+.add-button {
+    color: white; /* Letra blanca */
+    background-color: #FFC700; /* Fondo amarillo */
+    width: 20%;
+    margin-right: 83px; /* Espaciado opcional para separar del borde */
+}
+
+.add-button:hover {
+    background-color: #FFC900; /* Un tono más oscuro de amarillo para el hover */
+}
