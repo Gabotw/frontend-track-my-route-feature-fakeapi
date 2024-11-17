@@ -1,5 +1,10 @@
 <div class="title-container">
     <h1 class="title">Notificaciones recientes</h1>
+    <div class="button-container">
+        <button mat-raised-button color="primary" class="add-button" (click)="addNotification()">
+            Añadir
+        </button>
+    </div>
 </div>
 <ng-container *ngFor="let notification of notifications; let i = index">
     <div class="col-12 mb-5">
@@ -13,6 +18,10 @@
                         </mat-card-title-group>
                     </mat-card-header>
                     <p>{{ notification.description }}</p>
+
+                    <button mat-button color="warn" (click)="deleteNotification(notification.id)">
+                        <mat-icon>delete</mat-icon> Eliminar
+                    </button>
                 </div>
                 <div class="content-right">
                     <img mat-card-image [src]="notification.img_url" alt="Post Image" class="content-image">

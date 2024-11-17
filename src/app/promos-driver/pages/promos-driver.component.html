@@ -1,5 +1,10 @@
 <div class="container">
     <h1 class="title">Promociones</h1>
+    <div class="button-container">
+        <button mat-raised-button color="primary" class="add-button" (click)="addPromo()">
+            Añadir
+        </button>
+    </div>
     <div class="row justify-content-center justify-content-xl-evenly">
         <ng-container *ngFor="let promocion of promos; let i = index">
             <div class="col-10 col-md-6 col-lg-4  col-xl-3 mb-5">
@@ -11,7 +16,9 @@
                         <small class="card-date">Válido hasta: {{ promocion.validUntil }}</small>
                     </mat-card-content>
                     <mat-card-actions class="card-actions">
-                        <button mat-flat-button color="primary" class="card-button">Canjear</button>
+                        <button mat-flat-button color="warn" class="card-button" (click)="deletePromo(promocion.id)">
+                            <mat-icon>delete</mat-icon> Eliminar
+                        </button>
                     </mat-card-actions>
                 </mat-card>
             </div>

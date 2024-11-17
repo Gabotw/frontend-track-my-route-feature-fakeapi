@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>Añadir Notificación</h1>
+<div mat-dialog-content>
+    <form [formGroup]="form">
+        <mat-form-field appearance="outline">
+            <mat-label>Título</mat-label>
+            <input matInput formControlName="title" placeholder="Ingrese el título" />
+            <mat-error *ngIf="form.get('title')?.invalid">Título es requerido.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Subtítulo</mat-label>
+            <input matInput formControlName="subtitle" placeholder="Ingrese el subtítulo" />
+            <mat-error *ngIf="form.get('subtitle')?.invalid">Subtítulo es requerido.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Descripción</mat-label>
+            <textarea matInput formControlName="description" placeholder="Escriba una descripción"></textarea>
+            <mat-error *ngIf="form.get('description')?.invalid">Descripción es requerida.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>URL de Imagen</mat-label>
+            <input matInput formControlName="img_url" placeholder="Pegue el enlace de la imagen" />
+            <mat-error *ngIf="form.get('img_url')?.invalid">URL es requerida.</mat-error>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button color="warn" (click)="onCancel()">Cancelar</button>
+    <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="onSave()">Guardar</button>
+</div>

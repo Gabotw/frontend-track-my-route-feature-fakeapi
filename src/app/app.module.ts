@@ -27,7 +27,7 @@ import {
 } from "@angular/material/card";
 import {MatFormFieldModule, MatLabel, MatSuffix} from "@angular/material/form-field";
 import {MatIcon} from "@angular/material/icon";
-import {MatInput} from "@angular/material/input";
+import {MatInput, MatInputModule} from "@angular/material/input";
 import { LayoutModule } from '@angular/cdk/layout';
 import { NotFoundComponent } from './public/components/not-found/not-found.component';
 import { LoginTypeSelectionComponent } from './public/pages/login/type-selection/login-type-selection.component';
@@ -39,7 +39,7 @@ import { SideBarDriverComponent } from './public/components/side-bar-driver/side
 import {MatDrawer, MatDrawerContainer, MatDrawerContent} from "@angular/material/sidenav";
 import {MatToolbar} from "@angular/material/toolbar";
 import { SelectRouteComponent } from './select-route/pages/select-route.component';
-import {MatOption} from "@angular/material/core";
+import {MatNativeDateModule, MatOption} from "@angular/material/core";
 import {MatSelect} from "@angular/material/select";
 import {GoogleMap, MapDirectionsRenderer, MapHeatmapLayer, MapTrafficLayer} from "@angular/google-maps";
 import { AuthenticationSectionComponent } from './iam/components/authentication-section/authentication-section.component';
@@ -59,6 +59,16 @@ import {
     MatHeaderRowDef,
     MatRow, MatRowDef, MatTable
 } from "@angular/material/table";
+import { AddNotificationDialogComponent } from './promos-driver/components/add-notification-dialog/add-notification-dialog.component';
+import { AddPromoDialogComponent } from './promos-driver/components/add-promo-dialog/add-promo-dialog.component';
+import {
+    MatDatepicker,
+    MatDatepickerInput,
+    MatDatepickerModule,
+    MatDatepickerToggle
+} from "@angular/material/datepicker";
+import { AddTripDialogComponent } from './history-driver/components/add-trip-dialog/add-trip-dialog.component';
+import {MatDialogContent, MatDialogTitle} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -72,6 +82,9 @@ import {
     AuthenticationSectionComponent,
     SignInComponent,
     SignUpComponent,
+    AddNotificationDialogComponent,
+    AddPromoDialogComponent,
+    AddTripDialogComponent,
 
   ],
     imports: [
@@ -131,7 +144,15 @@ import {
         MatTable,
         PromosDriverComponent,
         NotificationsDriverComponent,
-        HistoryDriverComponent
+        HistoryDriverComponent,
+        MatDatepickerToggle,
+        MatDatepicker,
+        MatDatepickerInput,
+        MatInputModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatDialogTitle,
+        MatDialogContent,
     ],
   providers: [
     provideAnimationsAsync(),

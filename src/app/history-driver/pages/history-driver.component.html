@@ -1,4 +1,9 @@
 <h1 class="title">Rutas habituales</h1>
+<div class="button-container">
+    <button mat-raised-button color="primary" class="add-button" (click)="openAddTripDialog()">
+        Añadir
+    </button>
+</div>
 <div class="history-table-container">
     <table mat-table [dataSource]="dataSource" class="history-table">
 

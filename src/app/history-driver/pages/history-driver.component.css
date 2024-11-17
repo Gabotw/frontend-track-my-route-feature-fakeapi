@@ -44,3 +44,22 @@
     }
 }
 
+.button-container {
+    display: flex;          /* Habilitar flexbox para el botón */
+    justify-content: flex-end; /* Mover el botón hacia la derecha */
+    width: 100%;            /* Asegurarse de que ocupe todo el ancho */
+    margin-top: 10px;       /* Añadir espacio entre el título y el botón */
+}
+
+.add-button {
+    color: white; /* Letra blanca */
+    background-color: #FFC700; /* Fondo amarillo */
+    width: 20%;
+    margin-right: 15%;
+    margin-bottom: 1%;
+; /* Espaciado opcional para separar del borde */
+}
+
+.add-button:hover {
+    background-color: #FFC900; /* Un tono más oscuro de amarillo para el hover */
+}
