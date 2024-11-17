@@ -49,7 +49,6 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     NotFoundComponent,
     LoginTypeSelectionComponent,
     SideBarDriverComponent,
-    SelectRouteComponent,
     AuthenticationSectionComponent,
     SignInComponent,
     SignUpComponent
@@ -69,6 +68,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
         SearchRoutesComponent,
         SideBarComponent,
         FormsModule,
+        SelectRouteComponent,
         MatButton,
         MatCard,
         MatCardHeader,

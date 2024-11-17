@@ -17,7 +17,7 @@ export interface TravelHistory {
   imports: [MatTableModule],
 })
 export class HistoryComponent {
-  displayedColumns: string[] = ['origen', 'destino', 'hora', 'pasaje'];
+  displayedColumns: string[] = ['numero','origen', 'destino', 'hora', 'pasaje'];
   dataSource: any;
   clickedRow: number | null = null;
 
