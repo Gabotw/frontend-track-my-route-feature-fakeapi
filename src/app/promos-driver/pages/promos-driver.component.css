@@ -1,0 +1,53 @@
+.title{
+    font-family: "MuseoModerno", sans-serif ;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 400px;
+}
+
+.card-image{
+    height: 180px;
+    width: 100%;
+}
+
+.card-content{
+    overflow-y: auto;
+    flex: 1;
+}
+
+.card-title{
+    font-size: 30px;
+    font-weight: bolder;
+    flex: 0 0 auto;
+}
+
+.card-description{
+
+}
+
+.card-date{
+
+}
+
+.card-actions{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.card-button{
+    width: 100%;
+    flex: 1;
+}
+
+@media (max-width: 768px) {
+    .title{
+        display:none;
+    }
+}

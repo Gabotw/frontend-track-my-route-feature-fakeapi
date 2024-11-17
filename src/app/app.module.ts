@@ -17,7 +17,14 @@ import {SideBarComponent} from "./public/components/side-bar/side-bar.component"
 import { RecoverPasswordComponent } from './public/pages/recover-password/recover-password.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatButton, MatIconButton} from "@angular/material/button";
-import {MatCard, MatCardContent, MatCardHeader, MatCardSubtitle, MatCardTitle} from "@angular/material/card";
+import {
+    MatCard,
+    MatCardActions,
+    MatCardContent,
+    MatCardHeader, MatCardImage,
+    MatCardSubtitle,
+    MatCardTitle, MatCardTitleGroup
+} from "@angular/material/card";
 import {MatFormFieldModule, MatLabel, MatSuffix} from "@angular/material/form-field";
 import {MatIcon} from "@angular/material/icon";
 import {MatInput} from "@angular/material/input";
@@ -40,6 +47,18 @@ import { SignInComponent } from './iam/pages/sign-in/sign-in.component';
 import { SignUpComponent } from './iam/pages/sign-up/sign-up.component';
 import { AuthenticationInterceptor } from "./iam/services/authentication.interceptor";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { PromosDriverComponent } from './promos-driver/pages/promos-driver.component';
+import { NotificationsDriverComponent } from './notifications-driver/pages/notifications-driver.component';
+import { HistoryDriverComponent } from './history-driver/pages/history-driver.component';
+import {
+    MatCell,
+    MatCellDef,
+    MatColumnDef,
+    MatHeaderCell,
+    MatHeaderRow,
+    MatHeaderRowDef,
+    MatRow, MatRowDef, MatTable
+} from "@angular/material/table";
 
 
 @NgModule({
@@ -52,7 +71,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     SelectRouteComponent,
     AuthenticationSectionComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+
   ],
     imports: [
         MatSnackBarModule,
@@ -96,7 +116,22 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
         MapHeatmapLayer,
         MapTrafficLayer,
         RegisterDriverComponent,
-        LoginDriverComponent
+        LoginDriverComponent,
+        MatCardActions,
+        MatCardImage,
+        MatCardTitleGroup,
+        MatCell,
+        MatCellDef,
+        MatColumnDef,
+        MatHeaderCell,
+        MatHeaderRow,
+        MatHeaderRowDef,
+        MatRow,
+        MatRowDef,
+        MatTable,
+        PromosDriverComponent,
+        NotificationsDriverComponent,
+        HistoryDriverComponent
     ],
   providers: [
     provideAnimationsAsync(),
