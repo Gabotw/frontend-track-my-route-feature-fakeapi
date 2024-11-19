@@ -24,7 +24,7 @@ export class ConfigComponent implements OnInit {
   isEditable: boolean = false;
 
   // URL base para el backend
-  private serverBasePath: string = 'http://localhost:8080/api/v1';
+  private serverBasePath: string = 'https://backend-production-862f.up.railway.app/api/v1';
   private userId: number; // Cambiar profileId a userId
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {
