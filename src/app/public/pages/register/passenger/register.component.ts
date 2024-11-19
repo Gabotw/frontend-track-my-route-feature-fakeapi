@@ -45,8 +45,8 @@ export class RegisterComponent extends BaseFormComponent implements OnInit {
     if (this.RegisterForm.invalid) return;
     let username = this.RegisterForm.value.username;
     let password = this.RegisterForm.value.password;
-    const signUpRequest = new SignUpRequest(username, password);
-    this.authenticationService.signUp(signUpRequest);
+    const signUpRequest = new SignUpRequest(username, password, ['ROLE_USER']);
+    this.authenticationService.signUp(signUpRequest, '/login/passenger');
     this.submitted = true;
   }
 

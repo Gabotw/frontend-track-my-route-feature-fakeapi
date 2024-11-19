@@ -113,3 +113,16 @@
 
 }
 
+
+.error-notification {
+    background-color: #f44336; /* Color rojo para el error */
+    color: white;
+    padding: 16px;
+    border-radius: 4px;
+    position: fixed;
+    top: 300px; /* Ajusta según sea necesario */
+    left: 50%; /* Mueve el cuadro al centro horizontalmente */
+    transform: translateX(-50%); /* Centra el cuadro respecto a su propio ancho */
+    z-index: 1000; /* Para asegurarte de que esté sobre otros elementos */
+    transition: opacity 0.5s ease;
+}

@@ -1,0 +1,80 @@
+.article-card {
+    margin: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+}
+
+.article-card:hover {
+    transform: scale(1.03);
+}
+
+.mat-card-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.content-left {
+    flex: 0 0 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.content-right {
+    flex: 0 0 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-image {
+    max-width: 100%;
+    height: auto;
+}
+
+button {
+    margin-top: auto;
+}
+h1 {
+    text-align: center;
+    font-family: "MuseoModerno", sans-serif;
+}
+
+.title-container {
+    display: flex;
+    flex-direction: column; /* Apilar elementos verticalmente */
+    align-items: center;    /* Centrar horizontalmente */
+    margin: 20px;
+    position: relative;     /* Para posicionar el botón con respecto al contenedor */
+}
+
+.title {
+    text-align: center;
+    font-family: "MuseoModerno", sans-serif;
+    margin-bottom: 40px; /* Deja espacio para el botón */
+}
+
+.button-container {
+    display: flex;          /* Habilitar flexbox para el botón */
+    justify-content: flex-end; /* Mover el botón hacia la derecha */
+    width: 100%;            /* Asegurarse de que ocupe todo el ancho */
+    margin-top: 10px;       /* Añadir espacio entre el título y el botón */
+}
+
+.add-button {
+    color: white; /* Letra blanca */
+    background-color: #FFC700; /* Fondo amarillo */
+    width: 20%;
+    margin-right: 35px; /* Espaciado opcional para separar del borde */
+}
+
+.add-button:hover {
+    background-color: #FFC900; /* Un tono más oscuro de amarillo para el hover */
+}

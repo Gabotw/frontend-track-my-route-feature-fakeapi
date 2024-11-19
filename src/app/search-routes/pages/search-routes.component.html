@@ -1,23 +1,10 @@
-<div class="container">
-    <h1 class="title">Busca tu ruta</h1>
-    <div class="map-container">
-        <google-map height="400px"
-                    width="100%"
-                    [options]="options">
-            @if (directionsResults$ | async; as directionsResults) {
-                <map-directions-renderer [directions]="directionsResults"/>
-            }
-            <map-heatmap-layer></map-heatmap-layer>
-            <map-traffic-layer></map-traffic-layer>
-        </google-map>
-    </div>
+<!-- search-routes.component.html -->
+<div>
+    <h1>Buscar Ruta</h1>
+    <input type="number" [(ngModel)]="routeId" placeholder="Ingresa el ID de la ruta" />
+    <button (click)="loadRoute()" [disabled]="loading">Buscar Ruta</button>
 
-    <div class="map-btn">
-        <mat-radio-group [(ngModel)]="selectedCoordinates" (change)="onChangeCoordinates($event)">
-            <mat-radio-button value="ruta01">Bus 01</mat-radio-button>
-            <mat-radio-button value="ruta02">Bus 02</mat-radio-button>
-            <mat-radio-button value="ruta03">Bus 03</mat-radio-button>
-        </mat-radio-group>
-    </div>
+    <div *ngIf="loading">Cargando...</div>
 
+    <div id="map" style="height: 500px; width: 100%;"></div>
 </div>

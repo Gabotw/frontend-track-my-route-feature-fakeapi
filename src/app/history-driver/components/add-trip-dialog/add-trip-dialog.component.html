@@ -1,0 +1,37 @@
+<h1 mat-dialog-title>Añadir Notificación</h1>
+<div mat-dialog-content>
+    <form [formGroup]="form">
+        <mat-form-field appearance="outline">
+            <mat-label>Origen</mat-label>
+            <input matInput formControlName="origin" placeholder="Ingrese el origen" />
+            <mat-error *ngIf="form.get('origin')?.invalid">Origen es requerido.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Destino</mat-label>
+            <input matInput formControlName="destination" placeholder="Ingrese el destino" />
+            <mat-error *ngIf="form.get('destination')?.invalid">Destino es requerido.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Tiempo</mat-label>
+            <input matInput formControlName="time" placeholder="Ingrese el tiempo" />
+            <mat-error *ngIf="form.get('time')?.invalid">Tiempo es requerida.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Tarifa</mat-label>
+            <span matPrefix>&nbsp; S/&nbsp;</span>
+            <input matInput formControlName="fare" placeholder="Ingrese la tarifa"
+                   type="text"
+                   (keypress)="allowDecimal($event)"
+                   (blur)="formatFare()"
+            />
+            <mat-error *ngIf="form.get('fare')?.invalid">Tarifa es requerida.</mat-error>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions>
+    <button mat-button color="warn" (click)="onCancel()">Cancelar</button>
+    <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="onSave()">Guardar</button>
+</div>

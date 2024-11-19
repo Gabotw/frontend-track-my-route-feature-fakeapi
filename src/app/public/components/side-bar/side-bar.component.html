@@ -26,14 +26,6 @@
         </button>
 
         <button mat-button color="primary" class="sidenav-btn"
-                (click)="navigateTo('/sidebar/pay-ticket', 'Pasajes')"
-                [style.background-color]="selectedRoute === '/sidebar/pay-ticket'? 'green' : 'white'"
-                [style.color]="selectedRoute === '/sidebar/pay-ticket'? 'white' : 'black'">
-          <mat-icon class="icon-btn" aria-hidden="false" aria-label="search_routes-icon" fontIcon="paid"></mat-icon>
-          Pagar Pasaje
-        </button>
-
-        <button mat-button color="primary" class="sidenav-btn"
                 (click)="navigateTo('/sidebar/promos', 'Promociones')"
                 [style.background-color]="selectedRoute ==='/sidebar/promos'? 'green' : 'white'"
                 [style.color]="selectedRoute ==='/sidebar/promos'? 'white' : 'black'">
@@ -65,9 +57,9 @@
           Configuración
         </button>
 
-        <button mat-button color="warn"  class="sidenav-btn" (click)="navigateTo('/login', 'Login')">
-          <mat-icon class="icon-btn" aria-hidden="false" aria-label="search_routes-icon" fontIcon="logout"></mat-icon>
-          Cerrar Sesión
+        <button mat-button color="warn" class="sidenav-btn" (click)="logout()">
+            <mat-icon class="icon-btn" aria-hidden="false" aria-label="logout-icon" fontIcon="logout"></mat-icon>
+            Cerrar Sesión
         </button>
     </div>
   </mat-drawer>

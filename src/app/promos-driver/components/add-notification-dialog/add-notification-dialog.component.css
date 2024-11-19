@@ -1,0 +1,29 @@
+form {
+    max-width: 400px; /* Limitar el ancho del formulario */
+    margin: 0 auto; /* Centrar el formulario horizontalmente */
+    padding: 20px; /* Añadir espacio alrededor del formulario */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Suavizar bordes */
+    border-radius: 10px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Fondo ligero */
+}
+
+mat-form-field {
+    width: 100%; /* Asegurar que cada campo ocupe todo el ancho disponible */
+    margin-bottom: 15px; /* Espaciado entre campos */
+}
+
+mat-dialog-actions {
+    display: flex; /* Estilo de botones */
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+button {
+    min-width: 100px; /* Asegurar que los botones tengan un tamaño mínimo */
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    text-align: center; /* Centrar el título */
+    margin-bottom: 20px; /* Espaciado debajo del título */
+}

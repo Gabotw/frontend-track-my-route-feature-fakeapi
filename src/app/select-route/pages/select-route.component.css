@@ -1,102 +1,96 @@
-.title{
-    font-family: "MuseoModerno", sans-serif ;
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+h1, h2 {
     text-align: center;
-    margin-top: 10px;
 }
 
-.select-route-container{
-    width: 75vw;
-    margin-left: 20px;
+.form {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
 }
 
-mat-label{
-    font-style: italic;
+.form div {
+    margin-bottom: 10px;
 }
 
-mat-form-field{
-    width: 300px
-}
-
-.select-container{
-    display: flex;
-    justify-content: space-between;
-    align-items:center;
-}
-
-.select-container p{
-    font-size: 20px;
-}
-
-#ticket-price{
-    font-size: 48px;
+label {
+    display: block;
+    margin-bottom: 5px;
     font-weight: bold;
-    font-style: italic;
-    color: #00933C;
 }
 
-.save-container{
-    display:grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    margin-left: 20px;
+input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
-.save-btn{
-    margin-top: 10px;
-    font-weight: bold;
-    font-size: 13px;
-    background-color: #FFC700 !important;
-    color: white !important;
+button {
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-@media (max-width: 768px) {
-    .title{
-        display: none;
-    }
-
-    .select-route-container{
-        margin: 10px 0 10px 10px;
-        width: 95vw;
-    }
-
-    mat-label{
-        font-style: italic;
-    }
-
-    mat-form-field{
-        width: 150px;
-    }
-
-    .select-container{
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .select-container p{
-        font-size: 15px;
-        flex: 1;
-    }
-
-    .form{
-        width: 150px;
-    }
-
-    #ticket-price{
-        font-size: 30px;
-    }
-
-    .btn-container{
-        display: block;
-        text-align: center;
-    }
-
-    .payment-btn{
-        margin: 10px 10px 15px 0;
-    }
-
-    .verification-btn{
-        margin: 10px 0 15px 0;
-    }
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
 }
+
+.delete-button {
+    background-color: red;
+    color: white;
+    font-size: 12px; /* Tamaño más pequeño */
+    padding: 5px 10px; /* Reducir el padding para hacerlo más pequeño */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.delete-button:hover {
+    background-color: darkred; /* Cambiar a un color más oscuro al pasar el ratón */
+}
+
+.edit-button {
+    background-color: yellow;
+    color: black;
+    font-size: 12px; /* Mantener tamaño pequeño */
+    padding: 5px 10px; /* Ajustar padding para mantener el tamaño */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-button:hover {
+    background-color: gold; /* Cambiar a un color más dorado cuando el ratón pasa sobre el botón */
+}
+
+.finalize-button {
+    background-color: #28a745; /* Verde */
+    color: white; /* Texto blanco */
+    border: none; /* Sin bordes */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 5px 10px; /* Tamaño más pequeño */
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Transición suave */
+}
+
+.finalize-button:hover {
+    background-color: #218838; /* Verde más oscuro al pasar el mouse */
+}
+
+.finalize-button:disabled {
+    background-color: #6c757d; /* Gris para el estado deshabilitado */
+    cursor: not-allowed; /* Indica que no se puede hacer clic */
+}
+

@@ -1,46 +1,144 @@
-<h1 class="title">Seleccionar Ruta</h1>
+<div class="container">
+    <h1>Gestión de Rutas</h1>
 
-<div class="select-route-container">
-    <div class="form-container">
-        <div class="select-container">
-            <p>Seleccionar Ruta:</p>
-            <mat-form-field appearance="outline" class="form">
-                <mat-label>---Seleccionar Ruta---</mat-label>
-                <mat-select  [(value)]="selectedBus">
-                    <mat-option *ngFor="let bus of buses" [value]="bus">
-                        {{bus.bus_name}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
+    <!-- Botón para habilitar el formulario de creación de ruta -->
+    <button type="button" (click)="toggleRouteForm()" [disabled]="isEditingRoute">
+        Crear Nueva Ruta
+    </button>
+
+    <form *ngIf="isRouteFormEnabled" [formGroup]="routeForm" (ngSubmit)="submitRoute()">
+        <h2>Crear Nueva Ruta</h2>
+        <div>
+            <label>Inicio Latitud</label>
+            <input formControlName="startLatitude" type="text" />
+        </div>
+        <div>
+            <label>Inicio Longitud</label>
+            <input formControlName="startLongitude" type="text" />
+        </div>
+        <div>
+            <label>Fin Latitud</label>
+            <input formControlName="endLatitude" type="text" />
+        </div>
+        <div>
+            <label>Fin Longitud</label>
+            <input formControlName="endLongitude" type="text" />
+        </div>
+        <button type="submit" [disabled]="!routeForm.valid || isEditingRoute">
+            Confirmar nueva ruta
+        </button>
+    </form>
+
+
+    <form [formGroup]="waypointForm" (ngSubmit)="submitWaypoint()" *ngIf="submittedRoute">
+        <h2>Agregar Paraderos</h2>
+        <div>
+            <label>ID Ruta</label>
+            <input formControlName="wayId" type="number" [value]="wayId" readonly />
+        </div>
+        <div>
+            <label>Latitud</label>
+            <input formControlName="latitude" type="text" />
+        </div>
+        <div>
+            <label>Longitud</label>
+            <input formControlName="longitude" type="text" />
+        </div>
+        <button type="submit" [disabled]="!waypointForm.valid">Agregar Paradero</button>
+
+        <!-- Botón para limpiar el formulario y recargar la página -->
+        <button type="button"  class="finalize-button"  (click)="reloadPage()" [disabled]="!isRouteFormEnabled">
+            Ruta Finalizada
+        </button>
+    </form>
+
+    <hr />
+
+    <!-- Campo para ingresar el ID de la ruta que se quiere consultar -->
+    <label for="enteredWayId">Ingrese el ID de una ruta existente:</label>
+    <input id="enteredWayId" [(ngModel)]="enteredWayId" type="number" />
+
+    <!-- Botón para obtener detalles de la ruta -->
+    <button (click)="getRouteDetails()" [disabled]="!enteredWayId">Obtener detalles de la ruta</button>
+
+    <hr />
+
+    <!-- Mostrar detalles de la ruta -->
+    <div *ngIf="routeDetails">
+        <h3>Detalles de la ruta</h3>
+
+        <!-- Mostrar u ocultar formulario de edición según isEditingRoute -->
+        <div *ngIf="isEditingRoute">
+            <form [formGroup]="routeForm">
+                <div>
+                    <label>Latitud Inicial</label>
+                    <input formControlName="startLatitude" type="text" />
+                </div>
+                <div>
+                    <label>Longitud Inicial</label>
+                    <input formControlName="startLongitude" type="text" />
+                </div>
+                <div>
+                    <label>Latitud Final</label>
+                    <input formControlName="endLatitude" type="text" />
+                </div>
+                <div>
+                    <label>Longitud Final</label>
+                    <input formControlName="endLongitude" type="text" />
+                </div>
+
+                <!-- Botón para confirmar los cambios -->
+                <button *ngIf="isEditingRoute" (click)="editRoute()" [disabled]="!routeForm.valid">Confirmar cambios</button>
+            </form>
         </div>
 
-        <div class="select-container">
-            <p>Selecciona Unidad:</p>
-            <mat-form-field appearance="outline" class="form">
-                <mat-label>---Seleccionar Unidad---</mat-label>
-                <mat-select [(value)]="selectedBusStopOrigin">
-                    <mat-option *ngFor="let bus_stop of selectedBus?.bus_stops" [value]="bus_stop">
-                        {{bus_stop.stop_name}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-        </div>
+        <hr />
+
+        <p>Latitud inicial: {{ routeDetails.startLatitude }}</p>
+        <p>Longitud inicial: {{ routeDetails.startLongitude }}</p>
+        <p>Latitud final: {{ routeDetails.endLatitude }}</p>
+        <p>Longitud final: {{ routeDetails.endLongitude }}</p>
+
+        <!-- Botón para eliminar la ruta -->
+        <button class="delete-button" (click)="deleteRoute()">Eliminar Ruta</button>
+
+        <!-- Botón para editar la ruta -->
+        <button class="edit-button" (click)="toggleEditRoute()">Editar Ruta</button>
+
+        <hr />
+
+        <h4>Paraderos:</h4>
+        <ul>
+            <li *ngFor="let waypoint of routeDetails.whereabout">
+                ID: {{ waypoint.id }}, Latitud: {{ waypoint.latitude }}, Longitud: {{ waypoint.longitude }}
+
+                <!-- Botón para eliminar paradero -->
+                <button class="delete-button" (click)="deleteWaypoint(waypoint.id)">Eliminar Paradero</button>
+                <!-- Botón para habilitar el formulario de edición -->
+                <button class="edit-button" (click)="enableEditForm(waypoint.id)">Editar Paradero</button>
+
+                <!-- Formulario para editar paradero (solo se muestra si se está editando este paradero) -->
+                <div *ngIf="waypoint.id === editingWaypointId">
+                    <form [formGroup]="waypointForm">
+                        <div>
+                            <label>Latitud</label>
+                            <input formControlName="latitude" type="text" [value]="waypoint.latitude" />
+                        </div>
+                        <div>
+                            <label>Longitud</label>
+                            <input formControlName="longitude" type="text" [value]="waypoint.longitude" />
+                        </div>
+                        <!-- Botón para confirmar la edición -->
+                        <button type="button" (click)="editWaypoint(waypoint.id)" [disabled]="!waypointForm.valid">Confirmar Edición</button>
+
+                    </form>
+                </div>
+            </li>
+        </ul>
+
     </div>
 
-    <div class="save-container">
-        <button mat-flat-button mat-raised-button color="primary"
-                class="save-btn">Guardar</button>
-    </div>
-
-    <div style="margin-top: -1vh">
-        <google-map height="350px" width="100%">
-            <map-heatmap-layer></map-heatmap-layer>
-            <map-traffic-layer></map-traffic-layer>
-        </google-map>
-    </div>
+    <!-- Aquí agregamos el mapa -->
+    <div id="map" style="height: 400px; width: 100%;"></div>
 </div>
-
-
-
-
 

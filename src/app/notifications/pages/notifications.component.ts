@@ -1,14 +1,14 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
-  MatCard,
+  MatCard, MatCardActions,
   MatCardContent,
-  MatCardHeader, MatCardLgImage, MatCardMdImage,
+  MatCardHeader, MatCardImage, MatCardLgImage, MatCardMdImage,
   MatCardSubtitle,
   MatCardTitle,
   MatCardTitleGroup
 } from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {NotificationService} from "../services/notification.service";
 
 @Component({
@@ -24,26 +24,22 @@ import {NotificationService} from "../services/notification.service";
     MatCardMdImage,
     MatCardLgImage,
     MatButtonModule,
-    NgForOf
+    NgForOf,
+    MatCardActions,
+    MatCardImage,
+    NgIf
   ],
   templateUrl: './notifications.component.html',
   styleUrl: './notifications.component.css'
 })
-export class NotificationsComponent {
+export class NotificationsComponent implements OnInit{
   notifications: any;
-
-  constructor(private notificationService: NotificationService) {
-  }
-
-  ngOnInit(): void {
+  constructor(private notificationService: NotificationService) {}
+  ngOnInit() {
     this.notificationService.getAll().subscribe(
-        (data) =>{
+        (data: any) => {
           this.notifications = data;
         }
-    );
+    )
   }
-
-  notification = "Hubo un cambio de ruta debido a obras y el paradero de 2 de Mayo no estará en funcionamiento, tome sus precauciones"
-  notification2 = "Se ha detectado un atascamiento en la Av. Los girasoles"
-  notification3="Hemos hecho nuevos cambios y hemos añadido nuevas funcionalidades para que usted pueda usar con mayor facilidad nuestro servicio!"
 }

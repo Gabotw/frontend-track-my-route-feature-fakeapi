@@ -18,12 +18,13 @@
         </div>
     </div>
     <button mat-button class="adjust-button" *ngIf="!isEditable" (click)="isEditable=true">Cambiar ajustes de usuario</button>
-    <button mat-button class="save-button" *ngIf="isEditable" (click)="isEditable=false">Guardar</button>
+
+    <button mat-button class="save-button" *ngIf="isEditable" (click)="saveChanges(); isEditable=false">Guardar</button>
     <div class="edit-container">
         <mat-card-content *ngIf="isEditable">
             <mat-form-field appearance="outline" class="edit-container-input">
                 <mat-label>First Name</mat-label>
-                <input matInput [(ngModel)]="first_name"/>
+                <input matInput [(ngModel)]="first_name" />
             </mat-form-field>
 
             <mat-form-field appearance="outline" class="edit-container-input">
@@ -31,10 +32,12 @@
                 <input matInput [(ngModel)]="last_name"/>
             </mat-form-field>
 
-            <mat-form-field  appearance="outline" class="edit-container-input">
+            <mat-form-field appearance="outline" class="edit-container-input">
                 <mat-label>Email Address</mat-label>
-                <input matInput [(ngModel)]="email"/>
+                <input matInput [(ngModel)]="email" />
             </mat-form-field>
+
         </mat-card-content>
     </div>
+    <button class="btn btn-danger" (click)="deleteAccount()">Eliminar cuenta</button>
 </mat-card>

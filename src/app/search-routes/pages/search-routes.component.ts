@@ -1,127 +1,103 @@
-import { Component } from '@angular/core';
-import { map, Observable } from 'rxjs';
-import {
-  GoogleMap,
-  MapDirectionsRenderer,
-  MapDirectionsService,
-  MapHeatmapLayer,
-  MapTrafficLayer
-} from '@angular/google-maps';
-import { MatFormField } from '@angular/material/form-field';
-import { MatButtonToggle } from '@angular/material/button-toggle';
-import { AsyncPipe } from '@angular/common';
-import { MatLabel } from '@angular/material/form-field';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { MatInput } from '@angular/material/input';
-import {MatRadioButton, MatRadioChange, MatRadioGroup} from "@angular/material/radio";
+import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {environment} from "../../../environments/enviroment";
+import {FormsModule} from "@angular/forms";
+import {NgIf} from "@angular/common";
+
 
 @Component({
   selector: 'app-search-routes',
   standalone: true,
   imports: [
-    GoogleMap,
-    MapDirectionsRenderer,
-    MapHeatmapLayer,
-    MapTrafficLayer,
-    MatFormField,
-    MatButtonToggle,
-    AsyncPipe,
-    MatLabel,
-    ReactiveFormsModule,
-    MatInput,
-    MatRadioGroup,
     FormsModule,
-    MatRadioButton
+    NgIf
   ],
   templateUrl: './search-routes.component.html',
   styleUrls: ['./search-routes.component.css']
 })
-export class SearchRoutesComponent {
-  textOrigen = 'Ingrese Origen';
-  textDestino = 'Ingrese Destino';
-
-  params: any = {
-    componentRestrictions: { country: 'IN' }
-  };
-
+export class SearchRoutesComponent implements OnInit {
   options: google.maps.MapOptions = {
-    mapId: 'DEMO_MAP_ID',
     center: { lat: -12.0768506, lng: -77.0960512 },
     zoom: 15
   };
 
-  directionsResults$: Observable<google.maps.DirectionsResult | undefined>;
-  selectedCoordinates: any;
+  map: google.maps.Map;
+  directionsService: google.maps.DirectionsService;
+  directionsRenderer: google.maps.DirectionsRenderer;
 
-  constructor(private mapDirectionsService: MapDirectionsService) {
+  routeId: number;  // Variable para almacenar el ID de la ruta ingresado
+  loading: boolean = false;  // Indicador para mostrar que la carga está en proceso
 
-    const bus01Request: google.maps.DirectionsRequest = {
-      origin: { lat: -12.081, lng: -77.036 },
-      destination: { lat: -12.077, lng: -77.095 },
-      waypoints: [
-        { location: { lat: -12.080, lng: -77.040 } },
-        { location: { lat: -12.078, lng: -77.055 } }
-      ],
+  constructor(private http: HttpClient) {
+    // Inicializar las propiedades aquí
+    this.map = {} as google.maps.Map;
+    this.directionsService = {} as google.maps.DirectionsService;
+    this.directionsRenderer = {} as google.maps.DirectionsRenderer;
+    this.routeId = 0;
+  }
+
+  ngOnInit() {
+    this.initializeMap();
+  }
+
+  // Inicializa el mapa de Google
+  initializeMap() {
+    this.map = new google.maps.Map(document.getElementById('map') as HTMLElement, this.options);
+    this.directionsService = new google.maps.DirectionsService();
+    this.directionsRenderer = new google.maps.DirectionsRenderer();
+    this.directionsRenderer.setMap(this.map);
+  }
+
+  // Método para calcular la ruta usando los datos obtenidos
+  calculateRoute(routeData: any) {
+    const waypoints = routeData.whereabout.map((wp: any) => ({
+      location: new google.maps.LatLng(wp.latitude, wp.longitude),
+      stopover: true
+    }));
+
+    const request: google.maps.DirectionsRequest = {
+      origin: new google.maps.LatLng(routeData.startLatitude, routeData.startLongitude),
+      destination: new google.maps.LatLng(routeData.endLatitude, routeData.endLongitude),
+      waypoints: waypoints,
       travelMode: google.maps.TravelMode.DRIVING
     };
 
-    this.directionsResults$ = this.mapDirectionsService.route(bus01Request).pipe(map(response => response.result));
+    this.directionsService.route(request, (response, status) => {
+      if (status === google.maps.DirectionsStatus.OK) {
+        this.directionsRenderer.setDirections(response);
+      } else {
+        console.error('Error al calcular la ruta:', status);
+      }
+    });
   }
 
-  ngOnInit(): void {}
+  // Método que se llama cuando el usuario envía el formulario con el ID
+  loadRoute() {
+    this.getRouteById(this.routeId);  // Llama al método con el ID dinámico
+  }
 
-  onChangeCoordinates(event: MatRadioChange) {
-    let request: google.maps.DirectionsRequest;
-
-    switch (event.value) {
-      case "ruta01":
-        request = {
-          origin: { lat: -12.081, lng: -77.036 },
-          destination: { lat: -12.077, lng: -77.095 },
-          waypoints: [
-            { location: { lat: -12.080, lng: -77.040 } },
-            { location: { lat: -12.078, lng: -77.055 } }
-          ],
-          travelMode: google.maps.TravelMode.DRIVING
-        };
-        this.directionsResults$ = this.mapDirectionsService.route(request).pipe(map(response => response.result));
-        break;
-      case "ruta02":
-        request = {
-          origin: { lat: -12.070, lng: -77.030 },
-          destination: { lat: -12.075, lng: -77.090 },
-          waypoints: [
-            { location: { lat: -12.073, lng: -77.035 } },
-            { location: { lat: -12.072, lng: -77.050 } }
-          ],
-          travelMode: google.maps.TravelMode.DRIVING
-        };
-        this.directionsResults$ = this.mapDirectionsService.route(request).pipe(map(response => response.result));
-        break;
-      case "ruta03":
-        request = {
-          origin: { lat: -12.065, lng: -77.025 },
-          destination: { lat: -12.080, lng: -77.100 },
-          waypoints: [
-            { location: { lat: -12.068, lng: -77.030 } },
-            { location: { lat: -12.072, lng: -77.060 } }
-          ],
-          travelMode: google.maps.TravelMode.DRIVING
-        };
-        this.directionsResults$ = this.mapDirectionsService.route(request).pipe(map(response => response.result));
-        break;
-      default:
-        request = {
-          origin: { lat: -12.081, lng: -77.036 },
-          destination: { lat: -12.077, lng: -77.095 },
-          waypoints: [
-            { location: { lat: -12.080, lng: -77.040 } },
-            { location: { lat: -12.078, lng: -77.055 } }
-          ],
-          travelMode: google.maps.TravelMode.DRIVING
-        };
-        this.directionsResults$ = this.mapDirectionsService.route(request).pipe(map(response => response.result));
-        break;
+  // Método para obtener la ruta por ID dinámico
+  getRouteById(id: number) {
+    if (!id) {
+      console.error('ID de ruta no válido');
+      return;
     }
+
+    const token = localStorage.getItem('token');  // Obtén el token del localStorage
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);  // Añadir token al encabezado
+
+    this.loading = true;  // Activa el indicador de carga
+
+    this.http.get(`${environment.serverBasePath}/ways/${id}`, { headers }).subscribe(
+        (response: any) => {
+          console.log('Ruta obtenida:', response);
+          this.calculateRoute(response);  // Calcula y muestra la ruta
+          this.loading = false;  // Desactiva el indicador de carga
+        },
+        (error) => {
+          console.error('Error al obtener la ruta:', error);
+          this.loading = false;  // Desactiva el indicador de carga
+        }
+    );
   }
 }

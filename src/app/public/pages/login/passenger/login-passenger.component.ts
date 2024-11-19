@@ -31,6 +31,7 @@ export class LoginPassengerComponent extends BaseFormComponent implements OnInit
   loginForm! : FormGroup;
   hide = true;
   submitted = false;
+  errorMessage: string | null = null;
 
   constructor(private builder: FormBuilder, private router: Router, private authenticationService: AuthenticationService) {
     super();
@@ -42,6 +43,18 @@ export class LoginPassengerComponent extends BaseFormComponent implements OnInit
       password: ['', Validators.required],
       remember: false
     });
+
+    // Suscribirse a los errores de inicio de sesión
+    this.authenticationService.currentLoginError.subscribe(error => {
+      this.errorMessage = error;
+
+      // Mostrar el mensaje de error por un tiempo y luego ocultarlo
+      if (error) {
+        setTimeout(() => {
+          this.errorMessage = null; // Oculta el mensaje después de 5 segundos
+        }, 5000);
+      }
+    });
   }
 
   onSubmit() {
@@ -52,6 +65,7 @@ export class LoginPassengerComponent extends BaseFormComponent implements OnInit
       this.authenticationService.signIn(signInRequest);
       this.submitted = true;
     }
+
   }
 
   redirectToApp(){

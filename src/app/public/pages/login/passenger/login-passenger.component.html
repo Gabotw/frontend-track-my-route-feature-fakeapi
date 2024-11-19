@@ -27,6 +27,12 @@
               <mat-checkbox formControlName="remember">Recuérdame</mat-checkbox>
               <a (click)="redirectToRecoverPassword()" class="link">¿Olvidaste tu contraseña?</a>
           </div>
+
+          <!-- Mostrar mensaje de error -->
+          <div *ngIf="errorMessage" class="error-notification">
+              {{ errorMessage }}
+          </div>
+
           <div class="login-redirect-container">
               <button mat-raised-button color="primary" class="login-button">Ingresar</button>
           </div>

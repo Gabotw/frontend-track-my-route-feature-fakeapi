@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PayTicketComponent } from './pay-ticket/pages/pay-ticket.component';
 import { HistoryComponent } from './history/pages/history.component';
 import { ConfigComponent } from './public/pages/config/config.component';
 import {NotificationsComponent} from './notifications/pages/notifications.component';
@@ -19,6 +18,9 @@ import {SideBarDriverComponent} from "./public/components/side-bar-driver/side-b
 import {SelectRouteComponent} from './select-route/pages/select-route.component';
 import {SignInComponent} from "./iam/pages/sign-in/sign-in.component";
 import {SignUpComponent} from "./iam/pages/sign-up/sign-up.component";
+import {HistoryDriverComponent} from "./history-driver/pages/history-driver.component";
+import {NotificationsDriverComponent} from "./notifications-driver/pages/notifications-driver.component";
+import {PromosDriverComponent} from "./promos-driver/pages/promos-driver.component";
 export const routes: Routes = [
     { path: 'register/passenger', component: RegisterComponent },
     {path: 'register/driver', component: RegisterDriverComponent},
@@ -27,11 +29,13 @@ export const routes: Routes = [
     {path: 'login/driver', component: LoginDriverComponent},
     { path: 'recover-password', component: RecoverPasswordComponent},
     {path: 'driver', component: SideBarDriverComponent, children:[
-            {path: 'select-route',component: SelectRouteComponent},
+            { path: 'select-route',component: SelectRouteComponent},
             { path: 'config', component: ConfigComponent },
+            { path: 'notifications', component: NotificationsDriverComponent },
+            { path: 'promos', component: PromosDriverComponent },
+            { path: 'trips', component: HistoryDriverComponent },
         ]},
     { path: 'sidebar', component: SideBarComponent, children: [
-            { path: 'pay-ticket', component: PayTicketComponent },
             { path: 'notifications', component: NotificationsComponent },
             { path: 'search', component: SearchRoutesComponent },
             { path: 'promos', component: PromosComponent },

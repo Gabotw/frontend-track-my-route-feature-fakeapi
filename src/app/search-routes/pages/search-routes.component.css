@@ -1,47 +1,45 @@
-.container{
-    width: 1000px;
+/* search-routes.component.css */
+
+/* Aplicar la fuente solo dentro de este componente */
+div {
+    font-family: "MuseoModerno", sans-serif;
 }
 
-.title{
-    font-family: "MuseoModerno", sans-serif ;
-    text-align: center;
+/* Estilo para la caja de entrada (input) */
+input[type="number"] {
+    width: auto;               /* El ancho será automático */
+    margin-right: auto;         /* Empuja el botón hacia la derecha */
+    padding: 15px;           /* Espaciado interior para hacerlo más grande */
+    border-radius: 25px;     /* Bordes redondeados */
+    border: 2px solid #4CAF50; /* Borde verde */
+    font-size: 16px;         /* Tamaño de texto más grande */
+    outline: none;           /* Quitar borde por defecto al enfocarse */
+    margin-bottom: 20px;     /* Separación entre el input y el botón */
+    transition: border-color 0.3s ease;
+}
+
+/* Estilo para el botón de búsqueda */
+button {
+    background-color: #4CAF50; /* Color de fondo verde */
+    color: white;              /* Color de texto blanco */
+    padding: 15px 32px;        /* Espaciado interior del botón */
+    font-size: 18px;           /* Tamaño de texto más grande */
+    border: none;              /* Sin borde */
+    border-radius: 25px;       /* Bordes redondeados */
+    cursor: pointer;           /* Cursor de puntero al pasar sobre el botón */
+    width: auto;               /* El ancho será automático */
+    margin-right: auto;         /* Empuja el botón hacia la derecha */
+    display: block;            /* Hacer que el botón se comporte como bloque para el centrado */
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049; /* Cambio de color del fondo al pasar el mouse */
+}
+
+/* Estilo para el mensaje de carga */
+div > div {
+    font-size: 18px;
+    color: #4CAF50;            /* Color verde para el mensaje de carga */
     margin-top: 10px;
-}
-
-.map-btn{
-    text-align: center;
-    margin-top: 5%;
-}
-
-.map-container{
-    text-align: center;
-}
-
-.row-inputs{
-    margin-top: 5%;
-    display: flex;
-    flex-direction: row;
-
-}
-
-.col-first-input{
-    margin-left: 10%;
-}
-
-.second-col{
-
-    margin-left: 50%;
-}
-
-@media (max-width: 768px) {
-    .title{
-        display:none;
-    }
-
-    .container{
-        margin-top: 5vh;
-        width: 90vw;
-    }
-
-
 }
